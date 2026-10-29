@@ -1645,3 +1645,64 @@ footer .hashtag {
         box-shadow: 0 8px 20px rgba(88, 24, 31, 0.12) !important;
     }
 }
+.card-top-ornament {
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    white-space: nowrap !important; /* Forces crowns and text to stay on ONE single line */
+    font-size: 0.75rem !important;  /* Slightly smaller font so it fits small phone screens */
+    padding: 5px 16px !important;
+    line-height: 1.2 !important;
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+    z-index: 10 !important;
+}
+
+@media (max-width: 768px) {
+    .family-royal-card {
+        padding-top: 40px !important; /* Ensures the top badge never overlaps the avatar circle */
+    }
+}
+.mobile-break {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-break {
+        display: block;
+    }
+    
+    #countdown {
+        text-align: center !important;
+    }
+
+    .countdown-footer {
+        display: inline-block !important;
+        text-align: left !important;  /* Aligns both lines uniformly relative to each other */
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        padding: 0 10px !important;
+    }
+}
+@keyframes smoothRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply rotation to the icon frame or the emoji/image inside it */
+.schedule-icon-frame {
+    /* Adjust '6s' to change the speed: e.g., 4s is faster, 10s is slower */
+    animation: smoothRotate 6s linear infinite; 
+}
+
+/* Optional: If you want it to pause when a user hovers over the card */
+.schedule-card:hover .schedule-icon-frame {
+    animation-play-state: paused;
+}
