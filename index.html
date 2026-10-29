@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&P | Abhishek & Priya - Wedding Invitation</title>
+    <!-- Elegant Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style (1).css">
+</head>
+<body>
+
+    <!--AUDIO TAG-->
+    <audio id="weddingAudio" loop preload="auto">
+    <source src="assets/tum_hi_ho.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+    <!-- GLOBAL GOLD & SILVER PETALS CONTAINER FOR ENTIRE WEBSITE -->
+    <div class="bubbles-container" id="globalBubblesContainer" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;"></div>
+
+
+    <!-- LIGHTER TOP HEADER WITH HANGING BULBS -->
+    <nav>
+        <div class="nav-fairy-lights" id="fairyLightsContainer"></div>
+
+        <!-- Hanging Bulbs with Increased Size in Desktop Mode -->
+        <div class="hanging-toran-container">
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+            <div class="hanging-string"><div class="string-line"></div><div class="string-flower"></div></div>
+        </div>
+
+        <a href="#" class="nav-logo">A&P WEDDING</a>
+        <button class="menu-toggle" id="menuToggle" title="Open Menu">
+            <svg viewBox="0 0 32 32" width="17" height="17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Diamond Gem -->
+                <path d="M16 3L22 9H10L16 3Z" fill="url(#diamondGrad)" stroke="#d4af37" stroke-width="0.8"/>
+                <path d="M10 9H22L24 13H8L10 9Z" fill="url(#diamondGrad2)" stroke="#d4af37" stroke-width="0.8"/>
+                <path d="M8 13H24L16 23L8 13Z" fill="url(#diamondGrad3)" stroke="#d4af37" stroke-width="0.8"/>
+                <!-- Sparkle rays -->
+                <path d="M25 5L27 3M27 7L29 5" stroke="#fff" stroke-width="0.8" stroke-linecap="round"/>
+                <!-- Ring Band -->
+                <path d="M12 20C12 24.5 13.8 28 16 28C18.2 28 20 24.5 20 20" stroke="url(#bandGrad)" stroke-width="2.2" stroke-linecap="round"/>
+                <defs>
+                    <linearGradient id="diamondGrad" x1="10" y1="3" x2="22" y2="9" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#ffffff"/>
+                        <stop offset="50%" stop-color="#fff4cc"/>
+                        <stop offset="100%" stop-color="#ffd700"/>
+                    </linearGradient>
+                    <linearGradient id="diamondGrad2" x1="8" y1="9" x2="24" y2="13" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#e6f2ff"/>
+                        <stop offset="100%" stop-color="#fff8d6"/>
+                    </linearGradient>
+                    <linearGradient id="diamondGrad3" x1="8" y1="13" x2="24" y2="23" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#fff2cc"/>
+                        <stop offset="50%" stop-color="#e6c687"/>
+                        <stop offset="100%" stop-color="#b8860b"/>
+                    </linearGradient>
+                    <linearGradient id="bandGrad" x1="12" y1="20" x2="20" y2="28" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#d4af37"/>
+                        <stop offset="50%" stop-color="#fff6d6"/>
+                        <stop offset="100%" stop-color="#aa771c"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+            <li><a href="#hosts" onclick="closeMenu()">Family & Friends</a></li>
+            <li><a href="#countdown" onclick="closeMenu()">Countdown</a></li>
+            <li><a href="#schedule" onclick="closeMenu()">Schedule</a></li>
+            <li><a href="#rsvp" onclick="closeMenu()">RSVP</a></li>
+        </ul>
+    </nav>
+
+    <!-- COMPACT HOME PAGE WITH INCREASED RIBBON SIZE IN DESKTOP MODE -->
+    <header class="hero" id="home">
+        <!-- Smooth Cross-Fading Background Layers -->
+        <div class="hero-bg active" style="background-image: linear-gradient(rgba(40, 10, 15, 0.45), rgba(40, 10, 15, 0.45)), url('assets/0M2A4299.jpg');"></div>
+        <div class="hero-bg" style="background-image: linear-gradient(rgba(40, 10, 15, 0.45), rgba(40, 10, 15, 0.45)), url('assets/0M2A4640.jpg');"></div>
+        <div class="hero-bg" style="background-image: linear-gradient(rgba(40, 10, 15, 0.45), rgba(40, 10, 15, 0.45)), url('assets/0M2A4299.jpg');"></div>
+
+        <!-- SLOWER TWINKLING STAR CRACKERS CANVAS -->
+        <canvas id="crackerCanvas"></canvas>
+
+        <!-- Shared Gold & Silver Falling Petals Container on Home Page -->
+        <!-- Petals removed from Hero as requested -->
+
+        <!-- Very Slower Floating Golden Bubbles -->
+        <div class="bubbles-container" id="bubblesContainer" style="z-index: 2;"></div>
+
+        <!-- Floating Magic Sparks -->
+        <div class="floating-elements" id="floatingElements" style="z-index: 2;"></div>
+
+        <p class="subtitle">25 November 2026 · GM Resort</p>
+        <h1 class="cursive-name">Abhishek & Priya</h1>
+        <p class="tagline">Blessed by divine grace, uniting in eternal love like Ram & Sita</p>
+        
+        <div class="mantra-box">
+            <p class="sanskrit">ॐ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥</p>
+            <p>Seeking Lord Ganesha's divine blessings for an auspicious beginning.</p>
+        </div>
+
+        <p class="hashtag">#AbhiWedsPriya</p>
+        <a href="#rsvp" class="btn">Join the Celebration</a>
+
+        <!-- INCREASED FLOATING RIBBON SIZE IN DESKTOP MODE -->
+        <div class="hero-bottom-ribbon">
+            <div class="ribbon-track">
+                <span class="floating-ribbon-text">✨ Welcome to the Celebration of Abhishek & Priya &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; 25 November 2026 ✨</span>
+                <span class="floating-ribbon-text">✨ Welcome to the Celebration of Abhishek & Priya &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; 25 November 2026 ✨</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- GALLERY SECTION WITH GOLD & SILVER PETALS BACKGROUND -->
+    <section class="unified-photo-portion" id="gallery">
+        <div class="petals-container" id="galleryPetalsContainer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: hidden;"></div>
+        <h2 class="section-title">Our Precious Memories</h2>
+        <p class="section-subtitle">Curated moments floating and gracefully interacting in rhythmic harmony</p>
+
+        <div class="photo-master-container">
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4240 (1).jpg" alt="Memory 1">
+                </div>
+            </div>
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4284.jpg" alt="Memory 2">
+                </div>
+            </div>
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4299.jpg" alt="Memory 3">
+                </div>
+            </div>
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4452.jpg" alt="Memory 4">
+                </div>
+            </div>
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4624.jpg" alt="Memory 5">
+                </div>
+            </div>
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4640.jpg" alt="Memory 6">
+                </div>
+            </div>
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4721.jpg" alt="Memory 7">
+                </div>
+            </div>
+
+            <div class="royal-polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="assets/0M2A4452 (1).jpg" alt="Memory 8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREATIVE & ROYAL FAMILY & FRIENDS SECTION -->
+    <section class="family-friends-section" id="hosts">
+        <!-- Petals removed from Family as requested -->
+        
+        <!-- Royal Section Title & Crest Header -->
+        <div class="family-crest-header">
+            <div class="crest-icon">👑</div>
+            <h2 class="section-title">Pillars of Love & Blessings</h2>
+            <p class="section-subtitle">Meet our beloved families and cherished squad making our union extraordinary</p>
+        </div>
+
+        <!-- Interactive Category Switcher -->
+        <div class="family-tabs">
+            <button class="family-tab-btn active" onclick="switchFamilyTab('family')">
+                <span>🏰</span> The Royal Families
+            </button>
+            <button class="family-tab-btn" onclick="switchFamilyTab('squad')">
+                <span>✨</span> Friends & Siblings
+            </button>
+        </div>
+
+        <!-- Family Tab Content -->
+        <div class="family-tab-content active" id="tab-family">
+            <div class="creative-family-grid">
+                <!-- Groom's Family Card -->
+                <div class="family-royal-card">
+                    <div class="card-top-ornament">👑 Groom's Side 👑</div>
+                    <div class="family-avatar-circle" style="background: radial-gradient(circle, #fffdf0 0%, #ffe8b3 100%); border: 3px solid #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);">
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Groom SVG Icon -->
+                            <path d="M32 10C24.268 10 18 16.268 18 24C18 31.732 24.268 38 32 38C39.732 38 46 31.732 46 24C46 16.268 39.732 10 32 10Z" fill="#58181f"/>
+                            <path d="M32 14C26.477 14 22 18.477 22 24C22 29.523 26.477 34 32 34C37.523 34 42 29.523 42 24C42 18.477 37.523 14 32 14Z" fill="#f3e5ab"/>
+                            <!-- Turban / Crown Ornament -->
+                            <path d="M22 18C22 18 27 12 32 12C37 12 42 18 42 18C42 18 38 10 32 10C26 10 22 18 22 18Z" fill="#d4af37"/>
+                            <!-- Bowtie / Achkan Collar -->
+                            <path d="M12 56C12 45 21 40 32 40C43 40 52 45 52 56V60H12V56Z" fill="#58181f"/>
+                            <path d="M32 40L28 48H36L32 40Z" fill="#ffd700"/>
+                        </svg>
+                    </div>
+                    <h3>Garg Family</h3>
+                    <p class="family-tagline">"Rooted in tradition, bounded by warmth & unconditional love"</p>
+                    
+                    <div class="family-members-tags">
+                        <span class="member-badge">⚜️ Parents</span>
+                        <span class="member-badge">👴 Elders</span>
+                        <span class="member-badge">💫 Siblings</span>
+                    </div>
+
+                    <div class="family-blessing-quote">
+                        <p>“Blessings from our ancestors and parents guide Abhishek as he steps into this sacred new chapter with Priya.”</p>
+                    </div>
+                </div>
+
+                <!-- Bride's Family Card -->
+                <div class="family-royal-card">
+                    <div class="card-top-ornament">👑 Bride's Side 👑</div>
+                    <div class="family-avatar-circle" style="background: radial-gradient(circle, #fff0f3 0%, #ffd6df 100%); border: 3px solid #d4af37; box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);">
+                        <svg width="50" height="50" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Bride SVG Icon -->
+                            <path d="M32 10C24.268 10 18 16.268 18 24C18 31.732 24.268 38 32 38C39.732 38 46 31.732 46 24C46 16.268 39.732 10 32 10Z" fill="#58181f"/>
+                            <path d="M32 14C26.477 14 22 18.477 22 24C22 29.523 26.477 34 32 34C37.523 34 42 29.523 42 24C42 18.477 37.523 14 32 14Z" fill="#fce4ec"/>
+                            <!-- Dupatta / Tiara -->
+                            <path d="M16 22C16 14 23 8 32 8C41 8 48 14 48 22C48 22 43 14 32 14C21 14 16 22 16 22Z" fill="#e6a15c"/>
+                            <circle cx="32" cy="12" r="3" fill="#ffd700"/>
+                            <!-- Lehenga Collar -->
+                            <path d="M12 56C12 45 21 40 32 40C43 40 52 45 52 56V60H12V56Z" fill="#7a1c27"/>
+                            <path d="M26 40C26 40 29 46 32 46C35 46 38 40 38 40" stroke="#ffd700" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Bansal Family</h3>
+                    <p class="family-tagline">"Enfolded in grace, laughter & eternal family affection"</p>
+                    
+                    <div class="family-members-tags">
+                        <span class="member-badge">🌺 Parents</span>
+                        <span class="member-badge">👵 Elders</span>
+                        <span class="member-badge">✨ Siblings</span>
+                    </div>
+
+                    <div class="family-blessing-quote">
+                        <p>“With joy-filled hearts, we welcome Abhishek into our family, celebrating love that binds two grand heritage lines.”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Squad Tab Content - 3D Rotating / Interactive Photo Slider -->
+        <div class="family-tab-content" id="tab-squad">
+            <div class="squad-slider-wrapper">
+                <div class="squad-carousel" id="squadCarousel">
+                    <!-- Card 1: Family -->
+                    <div class="squad-slide-card active" data-index="0">
+                        <div class="squad-photo-frame">
+                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800&q=80" alt="Family">
+                            <div class="squad-badge-overlay">🏰 Family</div>
+                        </div>
+                        <div class="squad-card-body">
+                            <h3>Family</h3>
+                            <p class="squad-tagline">"Generations of love, wisdom & shared heritage"</p>
+                            <p class="squad-desc">Uniting near and far to shower Abhishek and Priya with prayers for a lifetime of abundant happiness.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Siblings -->
+                    <div class="squad-slide-card" data-index="1">
+                        <div class="squad-photo-frame">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80" alt="Siblings">
+                            <div class="squad-badge-overlay">⚜️ Siblings</div>
+                        </div>
+                        <div class="squad-card-body">
+                            <h3>Siblings</h3>
+                            <p class="squad-tagline">"Pillars of strength, grace & endless support"</p>
+                            <p class="squad-desc">Standing shoulder to shoulder through every celebration, keeping traditions alive, melodies ringing, and spirits high.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Groomsmen -->
+                    <div class="squad-slide-card" data-index="2">
+                        <div class="squad-photo-frame">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Groomsmen">
+                            <div class="squad-badge-overlay">🕺 Groomsmen</div>
+                        </div>
+                        <div class="squad-card-body">
+                            <h3>Groomsmen</h3>
+                            <p class="squad-tagline">"Partners in crime & high-octane baraat dance moves!"</p>
+                            <p class="squad-desc">Standing tall by Abhishek's side to bring non-stop energy, laughter, and unforgettable wedding celebration vibes.</p>
+                        </div>
+                    </div>
+
+                    
+
+                    <!-- Card 4: Friends (Section 1) -->
+                    <div class="squad-slide-card" data-index="3">
+                        <div class="squad-photo-frame">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Friends">
+                            <div class="squad-badge-overlay">🥂 Friends</div>
+                        </div>
+                        <div class="squad-card-body">
+                            <h3>Friends</h3>
+                            <p class="squad-tagline">"Growing up together, cheering forever"</p>
+                            <p class="squad-desc">From school days and early memories to this grand wedding mandap, these wonderful friends have shared every milestone.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Friends (Section 2) -->
+                    <div class="squad-slide-card" data-index="4">
+                        <div class="squad-photo-frame">
+                            <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80" alt="Friends">
+                            <div class="squad-badge-overlay">🌟 Friends</div>
+                        </div>
+                        <div class="squad-card-body">
+                            <h3>Friends</h3>
+                            <p class="squad-tagline">"Unbreakable bonds & late-night sangeet rehearsals"</p>
+                            <p class="squad-desc">Stealing the spotlight with rhythmic dance moves, joyful laughter, and bringing legendary energy to every celebration.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Cousins -->
+                    <div class="squad-slide-card" data-index="5">
+                        <div class="squad-photo-frame">
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Cousins">
+                            <div class="squad-badge-overlay">✨ Cousins</div>
+                        </div>
+                        <div class="squad-card-body">
+                            <h3>Cousins</h3>
+                            <p class="squad-tagline">"Family ties & lifelong shared laughter"</p>
+                            <p class="squad-desc">From childhood mischief to this glorious wedding milestone, our cousins fill every ceremony with warmth and unconditional love.</p>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Carousel Navigation Controls -->
+                <div class="squad-controls">
+                    <button class="squad-nav-btn" onclick="moveSquadSlide(-1)" title="Previous">❮</button>
+                    <div class="squad-dots" id="squadDots">
+                        <span class="squad-dot active" onclick="currentSquadSlide(0)"></span>
+                        <span class="squad-dot" onclick="currentSquadSlide(1)"></span>
+                        <span class="squad-dot" onclick="currentSquadSlide(2)"></span>
+                        <span class="squad-dot" onclick="currentSquadSlide(3)"></span>
+                        <span class="squad-dot" onclick="currentSquadSlide(4)"></span>
+                        <span class="squad-dot" onclick="currentSquadSlide(5)"></span>
+                        <span class="squad-dot" onclick="currentSquadSlide(6)"></span>
+                    </div>
+                    <button class="squad-nav-btn" onclick="moveSquadSlide(1)" title="Next">❯</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Blessings Banner -->
+    <div style="padding: 0 8%;">
+        <div class="blessing-banner">
+            <div class="blessing-star-sparkle">🌟 ✨ 🌟</div>
+            <h3>A Note from the Family</h3>
+            <p>"Like the sacred union of Ram and Sita, may this journey be filled with truth, devotion, and unending joy. We eagerly await your gracious presence to bless Abhishek and Priya."</p>
+        </div>
+    </div>
+
+    <!-- COUNTDOWN SECTION WITH GOLD & SILVER PETALS BACKGROUND -->
+    <section id="countdown">
+        
+        <h2 class="section-title">Counting Every Heartbeat</h2>
+
+        
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <span class="number" id="days">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="countdown-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="countdown-box">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="countdown-box">
+                <span class="number" id="seconds">00</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+<p class="countdown-footer"><span class="beating-heart">♥</span> &nbsp;Heartbeats between two hearts, racing to forever <span class="beating-heart">&nbsp;♥</span></p>
+        
+    </section>
+
+    <!-- Wedding Schedule Section with Spread Yellow Haldi & Dulha-Dulhan Photo -->
+    <section id="schedule" class="schedule-section">
+        
+        <h2 class="section-title">Wedding Schedule</h2>
+        <p class="section-subtitle">A magnificent celebration woven with sacred rituals, music, and vibrant joy</p>
+
+        <div class="schedule-grid">
+            <!-- Haldi Card -->
+            <div class="schedule-card">
+                <div>
+                    <span class="schedule-badge-top">Morning Ritual</span>
+                    <div class="schedule-icon-frame" style="background: radial-gradient(circle, #fff59d 0%, #ffeb3b 60%, #fbc02d 100%); box-shadow: 0 0 20px rgba(255, 235, 59, 0.8), inset 0 0 10px #ffffff;">💛</div>
+                    <h3>Haldi Ceremony</h3>
+                    <div class="schedule-time-badge">10:00 AM · 24 Nov 2026</div>
+                    <p class="schedule-desc">Drenched in vibrant turmeric glow, joyful laughter, and familial blessings.</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
+                </div>
+            </div>
+
+            <!-- Mehendi Card -->
+            <div class="schedule-card">
+                <div>
+                    <span class="schedule-badge-top">Afternoon Art</span>
+                    <div class="schedule-icon-frame">🌿</div>
+                    <h3>Mehendi Night</h3>
+                    <div class="schedule-time-badge">4:00 PM · 24 Nov 2026</div>
+                    <p class="schedule-desc">An enchanting evening adorned with intricate henna designs and folk melodies.</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
+                </div>
+            </div>
+
+            <!-- Sangeet Card -->
+            <div class="schedule-card">
+                <div>
+                    <span class="schedule-badge-top">Grand Evening</span>
+                    <div class="schedule-icon-frame">🎵</div>
+                    <h3>Sangeet Celebration</h3>
+                    <div class="schedule-time-badge">7:00 PM · 24 Nov 2026</div>
+                    <p class="schedule-desc">A dazzling night of high-energy dance performances and royal feasts.</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
+                </div>
+            </div>
+
+            <!-- Wedding Card -->
+            <div class="schedule-card">
+                <div>
+                    <span class="schedule-badge-top">Sacred Union</span>
+                    <div class="schedule-icon-frame">💍</div>
+                    <h3>Wedding Ceremony</h3>
+                    <div class="schedule-time-badge">7:00 PM · 25 Nov 2026</div>
+                    <p class="schedule-desc">Sacred pheras, eternal vows, and divine blessings under the floral mandap.</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP SECTION -->
+    <section id="rsvp" class="rsvp-section">
+        
+        <h2 class="section-title">RSVP</h2>
+        <p class="section-subtitle">Your presence is our greatest gift</p>
+
+        <div class="rsvp-form">
+            <form onsubmit="event.preventDefault(); alert('Thank you for your response!');">
+                <div class="form-group">
+                    <label>Guest Name *</label>
+                    <input type="text" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Number of Guests *</label>
+                    <input type="number" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Will you attend? *</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="attendance" required> Yes</label>
+                        <label><input type="radio" name="attendance" required> No</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Message for the couple</label>
+                    <textarea rows="3" placeholder="Share your blessings..."></textarea>
+                </div>
+                <button type="submit" class="btn">Send RSVP</button>
+            </form>
+        </div>
+    </section>
+
+                <!-- Footer -->
+    <footer style="position: relative; overflow: hidden; padding: 25px 20px; background: radial-gradient(circle at center, #3a0d12 0%, #280a0e 100%);">
+        
+        <div style="font-size: 1.4rem; color: var(--primary-gold); margin-bottom: 6px; letter-spacing: 10px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);">✨ 🌟 ✨</div>
+        <p style="font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: #fff6d6; margin-bottom: 4px; text-shadow: 0 3px 12px rgba(0,0,0,0.8);">Abhishek & Priya</p>
+        <p style="font-size: 0.9rem; letter-spacing: 2px; color: var(--light-gold); text-transform: uppercase; margin-bottom: 4px;">25 November 2026 · GM Resort</p>
+        <p style="font-size: 0.8rem; color: #d0c0b0; font-style: italic; margin-bottom: 8px;">We eagerly await your blessings and gracious presence</p>
+        <p class="hashtag" style="font-size: 1rem; color: var(--primary-gold); letter-spacing: 3px; margin-bottom: 0;">#AbhiWedsPriya</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+</body>
+</html>
