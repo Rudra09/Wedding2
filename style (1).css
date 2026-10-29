@@ -1815,6 +1815,105 @@ footer .hashtag {
         filter: drop-shadow(0 0 10px rgba(243, 156, 18, 0.9)); 
     }
 }
+/* Base styles for the Phera Arena */
+.phera-arena {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    padding: 15px 5px;
+    min-height: 180px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.couple-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s ease-in-out;
+    z-index: 3;
+}
+
+.avatar-icon-box {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-gold, #d4af37);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(88, 24, 31, 0.15);
+}
+
+.center-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    margin: 0 5px;
+}
+
+/* --- MOBILE RESPONSIVE OPTIMIZATIONS (Screens under 576px) --- */
+@media (max-width: 576px) {
+    #seven-pheras {
+        padding: 50px 15px !important; /* Smaller side padding on phones */
+    }
+
+    #seven-pheras > div {
+        padding: 20px 12px !important; /* Compact inner card padding */
+        border-radius: 18px !important;
+    }
+
+    .section-title {
+        font-size: 1.6rem !important;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Shrink avatar size slightly on mobile so they don't crowd the mandap */
+    .avatar-icon-box {
+        width: 60px;
+        height: 60px;
+    }
+
+    .avatar-name {
+        font-size: 0.85rem;
+        margin-top: 4px;
+    }
+
+    /* Shrink Mandap / Havan image container for phones */
+    .center-stage img {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .floating-garland {
+        font-size: 1.2rem !important;
+    }
+
+    /* Tighter movement range for mobile translation so avatars never overlap */
+    /* (Handled via script or a smaller scale max) */
+    .phera-card {
+        padding: 12px !important;
+    }
+
+    .phera-card h3 {
+        font-size: 1.05rem !important;
+    }
+
+    .phera-vow {
+        font-size: 0.85rem !important;
+    }
+
+    .btn-phera {
+        padding: 10px 20px !important;
+        font-size: 0.95rem !important;
+    }
+}
 /* Rose Petal Shower Animation */
 .petal-container {
     position: absolute;

@@ -516,17 +516,42 @@ function nextPheraStep() {
     // When the page first loads, if currentPhera is 0, we are currently viewing Step 1. 
     // Clicking the button now should move us to Step 2 (index 1).
     if (currentPhera < 6) {
-        currentPhera++; // Advance index first (e.g., from 0 to 1 for 2nd phera)
-        const stepData = realPherasData[currentPhera];
-        const activePheraNum = currentPhera + 1; // 2 through 7
+        // currentPhera++; // Advance index first (e.g., from 0 to 1 for 2nd phera)
+        // const stepData = realPherasData[currentPhera];
+        // const activePheraNum = currentPhera + 1; // 2 through 7
 
-        // Move couple closer step by step
-        const moveOffset = activePheraNum * 15;
+        // // Move couple closer step by step
+        // const moveOffset = activePheraNum * 15;
+        // groom.style.transform = `translateX(${moveOffset}px)`;
+        // bride.style.transform = `translateX(-${moveOffset}px)`;
+
+        // // Make the floating garland pulse / scale up slightly
+        // garland.style.transform = `scale(${1 + (activePheraNum * 0.05)})`;
+
+        // // Update Progress Bar accurately
+        // const progressPercent = (activePheraNum / 7) * 100;
+        // fill.style.width = `${progressPercent}%`;
+
+        // // Update Text
+        // badge.innerText = `SACRED PHERA ${activePheraNum} OF 7`;
+        // title.innerText = stepData.title;
+        // vow.innerText = `"${stepData.vow}"`;
+        // btn.innerText = stepData.btnText;
+        if (currentPhera < 6) {
+        currentPhera++; 
+        const stepData = realPherasData[currentPhera];
+        const activePheraNum = currentPhera + 1; 
+
+        // Check if screen is mobile (< 576px wide) to adjust walking distance safely
+        const isMobile = window.innerWidth <= 576;
+        const stepMultiplier = isMobile ? 4 : 8; // Shorter steps on mobile to prevent overlapping
+
+        const moveOffset = activePheraNum * stepMultiplier;
         groom.style.transform = `translateX(${moveOffset}px)`;
         bride.style.transform = `translateX(-${moveOffset}px)`;
 
         // Make the floating garland pulse / scale up slightly
-        garland.style.transform = `scale(${1 + (activePheraNum * 0.05)})`;
+        garland.style.transform = `scale(${1 + (activePheraNum * 0.04)})`;
 
         // Update Progress Bar accurately
         const progressPercent = (activePheraNum / 7) * 100;
@@ -537,6 +562,8 @@ function nextPheraStep() {
         title.innerText = stepData.title;
         vow.innerText = `"${stepData.vow}"`;
         btn.innerText = stepData.btnText;
+
+    }
 
     } else if (currentPhera === 6) {
         // FINAL 7th PHERA REACHED -> Hide Havan arena & show final couple picture with celebration
@@ -555,6 +582,7 @@ function nextPheraStep() {
         isComplete = true; // Lock state so the next click handles the reset
     }
 }
+
 
 // Function to generate falling rose and marigold petals from all directions
 function triggerRosePetals() {
