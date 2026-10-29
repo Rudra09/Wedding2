@@ -431,3 +431,150 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+let currentPhera = 0;
+let isComplete = false; // Tracks whether the ceremony has finished
+
+const realPherasData = [
+    {
+        title: "Nourishment & Provision 🍚",
+        vow: "Together we will share the food, nourishment, and financial responsibility to build a prosperous and healthy home.",
+        btnText: "🔥 Take 2nd Phera"
+    },
+    {
+        title: " Strength & Physical Wellness 💪",
+        vow: "Together we will cultivate physical and mental strength, supporting each other through all life's challenges.",
+        btnText: "🔥 Take 3rd Phera"
+    },
+    {
+        title: "Wealth, Prosperity & Spiritual Growth 🌟",
+        vow: "Together we will strive to earn honest wealth, practice charity, and grow in wisdom and spiritual devotion.",
+        btnText: "🔥 Take 4th Phera"
+    },
+    {
+        title: "Family Joy, Happiness & Harmony 🏡",
+        vow: "Together we will bring joy, mutual trust, and deep respect to each other and our families.",
+        btnText: "🔥 Take 5th Phera"
+    },
+    {
+        title: "Noble Offspring & Legacy 👶",
+        vow: "Together we pray for noble, healthy children, and pledge to guide them with good values and unconditional love.",
+        btnText: "🔥 Take 6th Phera"
+    },
+    {
+        title: "Longevity & Seasons of Life 🌸",
+        vow: "Together we pledge to stand side-by-side through all seasons of life, sharing every joy and sorrow gracefully.",
+        btnText: "🔥 Take Final 7th Phera"
+    },
+    {
+        title: "Eternal Companionship & Friendship 🤝",
+        vow: "We are now husband and wife, eternal companions and true friends bound by love, loyalty, and sacred trust.",
+        btnText: "🌸 Exchange Varmala!"
+    }
+];
+
+function nextPheraStep() {
+    const ceremonyArena = document.getElementById('ceremonyArena');
+    const finalCoupleContainer = document.getElementById('finalCoupleContainer');
+    const groom = document.getElementById('coupleGroom');
+    const bride = document.getElementById('coupleBride');
+    const garland = document.getElementById('floatingGarland');
+    const fill = document.getElementById('pheraFill');
+    const badge = document.getElementById('pheraBadge');
+    const title = document.getElementById('pheraTitle');
+    const vow = document.getElementById('pheraVow');
+    const btn = document.getElementById('pheraBtn');
+    const petalContainer = document.getElementById('petalContainer');
+
+    // If ceremony was complete, clicking "Replay" resets everything back to Step 1 cleanly
+    if (isComplete) {
+        currentPhera = 0;
+        isComplete = false;
+
+        // Switch back views: Show ceremony arena, hide final combined picture
+        if (ceremonyArena) ceremonyArena.style.display = 'flex';
+        if (finalCoupleContainer) finalCoupleContainer.style.display = 'none';
+
+        groom.style.transform = `translateX(0px)`;
+        bride.style.transform = `translateX(0px)`;
+        garland.innerText = '🌹🏵️🌹🏵️🌹'; 
+        garland.style.transform = 'scale(1)';
+        
+        // Reset to Step 1 data and accurate 1/7th progress bar width
+        const stepData = realPherasData[0];
+        badge.innerText = `SACRED PHERA 1 OF 7`;
+        title.innerText = stepData.title;
+        vow.innerText = `"${stepData.vow}"`;
+        btn.innerText = stepData.btnText;
+        
+        fill.style.width = `${(1 / 7) * 100}%`;
+        petalContainer.innerHTML = ''; 
+
+        currentPhera = 0; // Keep at 0 so first click advances to Phera 1 / 2 properly
+        return;
+    }
+
+    // When the page first loads, if currentPhera is 0, we are currently viewing Step 1. 
+    // Clicking the button now should move us to Step 2 (index 1).
+    if (currentPhera < 6) {
+        currentPhera++; // Advance index first (e.g., from 0 to 1 for 2nd phera)
+        const stepData = realPherasData[currentPhera];
+        const activePheraNum = currentPhera + 1; // 2 through 7
+
+        // Move couple closer step by step
+        const moveOffset = activePheraNum * 15;
+        groom.style.transform = `translateX(${moveOffset}px)`;
+        bride.style.transform = `translateX(-${moveOffset}px)`;
+
+        // Make the floating garland pulse / scale up slightly
+        garland.style.transform = `scale(${1 + (activePheraNum * 0.05)})`;
+
+        // Update Progress Bar accurately
+        const progressPercent = (activePheraNum / 7) * 100;
+        fill.style.width = `${progressPercent}%`;
+
+        // Update Text
+        badge.innerText = `SACRED PHERA ${activePheraNum} OF 7`;
+        title.innerText = stepData.title;
+        vow.innerText = `"${stepData.vow}"`;
+        btn.innerText = stepData.btnText;
+
+    } else if (currentPhera === 6) {
+        // FINAL 7th PHERA REACHED -> Hide Havan arena & show final couple picture with celebration
+        if (ceremonyArena) ceremonyArena.style.display = 'none';
+        if (finalCoupleContainer) finalCoupleContainer.style.display = 'block';
+
+        // Trigger Petal Shower Celebration
+        triggerRosePetals();
+
+        fill.style.width = '100%';
+        badge.innerText = 'VARMALA & VOWS COMPLETE! 🎉';
+        title.innerText = 'Abhishek & Priya are Officially Wed! 💖✨';
+        vow.innerText = '"By completing the seven steps, we have become companions for life. May our bond grow stronger with every passing day!"';
+        btn.innerText = '🔄 Replay Sacred Pheras';
+
+        isComplete = true; // Lock state so the next click handles the reset
+    }
+}
+
+// Function to generate falling rose and marigold petals from all directions
+function triggerRosePetals() {
+    const container = document.getElementById('petalContainer');
+    if (!container) return;
+    container.innerHTML = ''; 
+
+    for (let i = 0; i < 45; i++) {
+        const item = document.createElement('div');
+        item.className = 'rose-petal';
+        item.innerText = Math.random() > 0.5 ? '🌹' : '🍂'; 
+        
+        item.style.left = Math.random() * 100 + '%';
+        const randomDrift = (Math.random() * 80 - 40) + 'px';
+        item.style.setProperty('--drift', randomDrift);
+
+        item.style.fontSize = (Math.random() * 0.6 + 0.9) + 'rem';
+        item.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+        item.style.animationDelay = (Math.random() * 0.5) + 's';
+        
+        container.appendChild(item);
+    }
+}

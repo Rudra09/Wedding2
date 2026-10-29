@@ -467,7 +467,69 @@
             </div>
         </div>
     </section>
+<section id="seven-pheras" style="background: linear-gradient(135deg, #fdfbf7 0%, #f7efe2 50%, #fcedef 100%); position: relative; overflow: hidden; padding: 90px 6%; text-align: center;">
+    <h2 class="section-title">The Sacred 7 Vows & Varmala</h2>
+    <p class="section-subtitle">Walk through the authentic Saptapadi vows with Abhishek & Priya step by step!</p>
 
+    <div style="max-width: 720px; margin: 0 auto; background: #ffffff; border: 2px solid var(--primary-gold, #d4af37); border-radius: 25px; padding: 35px 25px; box-shadow: 0 15px 40px rgba(88, 24, 31, 0.12); position: relative; overflow: hidden;">
+        
+        <!-- Rose Petal Container for 7th Phera -->
+        <div id="petalContainer" class="petal-container"></div>
+
+        <!-- Sacred Fire Arena & Floating Varmala (Hidden when ceremony completes) -->
+        <div id="ceremonyArena" class="phera-arena">
+            <!-- Abhishek -->
+            <div id="coupleGroom" class="couple-avatar">
+                <div class="avatar-icon-box"><img src="assets/wife/boy.png" style="width: 100%; height: 100%; object-fit: contain; transform: scaleX(-1);"></div>
+                <span class="avatar-name">Abhishek</span>
+            </div>
+
+            <!-- Center Stage: Floating Varmala Above & Havan Kund Image Below -->
+            <div class="center-stage" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <!-- Restored floatingGarland so JavaScript doesn't break -->
+                <!-- <div style="font-size: 1.5rem; margin-bottom: 5px; transition: transform 0.3s ease;">🌹🏵️🌹🏵️🌹</div> -->
+                
+                <!-- Havan Kund Image -->
+                <div class="sacred-fire" style="width: 120px; height: 100px; display: flex; align-items: center; justify-content: center;">
+                    <img  id="floatingGarland" class="floating-garland" src="assets/wife/aagni.png" alt="Havan Kund" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+               
+            </div>
+
+            <!-- Priya -->
+            <div id="coupleBride" class="couple-avatar">
+                <div class="avatar-icon-box"><img src="assets/wife/finallady.jpg" style="width: 100%; height: 100%; object-fit: contain; transform: scaleX(-1);"></div>
+                <span class="avatar-name">Priya</span>
+            </div>
+        </div>
+
+        <!-- Final Married Couple Display Picture (Shown ONLY when Varmala & Vows Complete) -->
+        <div id="finalCoupleContainer" style="display: none; text-align: center; padding: 15px 0;">
+            <div style="width: 180px; height: 180px; margin: 0 auto; border-radius: 50%; border: 3px solid var(--primary-gold, #d4af37); overflow: hidden; box-shadow: 0 10px 25px rgba(88, 24, 31, 0.2);">
+                <img src="assets/wife/couple.png" alt="Abhishek & Priya Together" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <span style="display: block; margin-top: 10px; font-weight: bold; font-size: 1.1rem; color: #58181f;">Abhishek & Priya</span>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="phera-progress-bar">
+            <div id="pheraFill" class="phera-fill"></div>
+        </div>
+
+        <!-- Phera Card Details -->
+        <div class="phera-card">
+            <div id="pheraBadge" class="phera-badge">INTRODUCTION</div>
+            <h3 id="pheraTitle">The Sacred Bond of Seven Steps 🌸</h3>
+            <p id="pheraVow" class="phera-vow">"Together, let us embark on the journey of life, sharing our joys, responsibilities, and eternal love." Click below to begin the 1st Phera.</p>
+        </div>
+
+        <!-- Interactive Action Button -->
+        <button id="pheraBtn" onclick="nextPheraStep()" class="btn-phera">
+            🔥 Take 1st Phera
+        </button>
+
+    </div>
+</section>
     <!-- RSVP SECTION -->
     <section id="rsvp" class="rsvp-section">
         
