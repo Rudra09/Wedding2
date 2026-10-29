@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Create floating music toggle button
     const musicBtn = document.createElement('button');
     musicBtn.id = 'bgMusicToggle';
-    musicBtn.innerHTML = '🎵 Play Wedding Tune';
+    musicBtn.innerHTML = '🎵 Play Music';
     musicBtn.style.cssText = `
         position: fixed;
         bottom: 25px;
