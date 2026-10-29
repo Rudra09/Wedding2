@@ -1677,7 +1677,15 @@ footer .hashtag {
         text-align: center !important;
     }
 
-  
+    .countdown-footer {
+        display: inline-block !important;
+        text-align: left !important;  /* Aligns both lines uniformly relative to each other */
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        font-size: 0.95rem !important;
+        line-height: 1.7 !important;
+        padding: 0 10px !important;
+    }
     /* 2. Countdown Footer Layout: Line 1 Left, Line 2 Right-Shifted */
     .countdown-footer {
         display: block !important;
