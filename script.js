@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isPlaying) {
             audio.play().then(() => {
                 isPlaying = true;
-                musicBtn.innerHTML = '🎶 Pause Tune';
+                musicBtn.innerHTML = '🎶 Pause Music';
                 musicBtn.style.background = 'linear-gradient(135deg, #58181f, #3a0d12)';
                 musicBtn.style.color = '#ffd700';
             }).catch(e => {
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             audio.pause();
             isPlaying = false;
-            musicBtn.innerHTML = '🎵 Play Wedding Tune';
+            musicBtn.innerHTML = '🎵 Play Music';
             musicBtn.style.background = 'linear-gradient(135deg, #d4af37, #ffd700)';
             musicBtn.style.color = '#58181f';
         }
