@@ -1677,14 +1677,23 @@ footer .hashtag {
         text-align: center !important;
     }
 
+  
+    /* 2. Countdown Footer Layout: Line 1 Left, Line 2 Right-Shifted */
     .countdown-footer {
-        display: inline-block !important;
-        text-align: left !important;  /* Aligns both lines uniformly relative to each other */
-        max-width: 300px !important;
-        margin: 0 auto !important;
-        font-size: 0.95rem !important;
-        line-height: 1.7 !important;
-        padding: 0 10px !important;
+        display: block !important;
+        text-align: center !important;
+        padding: 0 15px !important;
+    }
+    
+    .footer-line-1 {
+        display: block !important;
+        text-align: left !important;
+    }
+    
+    .footer-line-2 {
+        display: block !important;
+        text-align: right !important;
+        padding-right: 10px !important;
     }
 }
 @keyframes smoothRotate {
@@ -1706,3 +1715,4 @@ footer .hashtag {
 .schedule-card:hover .schedule-icon-frame {
     animation-play-state: paused;
 }
+
