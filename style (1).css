@@ -1623,21 +1623,25 @@ footer .hashtag {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #ffffff 0%, #ffd700 50%, #d4af37 100%);
 }
+.bubble, 
+.floating-spark, 
+.petal, 
+.royal-polaroid-card, 
+#crackerCanvas {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
 @media (max-width: 768px) {
-    /* Hide heavy DOM-based floating bubbles and sparkles on mobile */
-    .bubbles-container, .floating-elements, #crackerCanvas, .petals-container {
-        display: none !important;
+    /* Slightly reduce particle density on mobile so the phone's CPU doesn't struggle */
+    .bubble:nth-child(even), 
+    .floating-spark:nth-child(even) {
+        display: none;
     }
 
-    /* Disable continuous floating keyframes on polaroid cards for smooth scrolling */
+    /* Simplify heavy drop-shadows on mobile for lag-free scrolling */
     .royal-polaroid-card {
-        animation: none !important;
-        transition: transform 0.3s ease !important;
-    }
-
-    /* Disable heavy blur filters on mobile navigation */
-    nav {
-        backdrop-filter: none !important;
-        background: rgba(255, 253, 249, 0.98) !important;
+        box-shadow: 0 8px 20px rgba(88, 24, 31, 0.12) !important;
     }
 }
