@@ -1623,3 +1623,21 @@ footer .hashtag {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #ffffff 0%, #ffd700 50%, #d4af37 100%);
 }
+@media (max-width: 768px) {
+    /* Hide heavy DOM-based floating bubbles and sparkles on mobile */
+    .bubbles-container, .floating-elements, #crackerCanvas, .petals-container {
+        display: none !important;
+    }
+
+    /* Disable continuous floating keyframes on polaroid cards for smooth scrolling */
+    .royal-polaroid-card {
+        animation: none !important;
+        transition: transform 0.3s ease !important;
+    }
+
+    /* Disable heavy blur filters on mobile navigation */
+    nav {
+        backdrop-filter: none !important;
+        background: rgba(255, 253, 249, 0.98) !important;
+    }
+}
