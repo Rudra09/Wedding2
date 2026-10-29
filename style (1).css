@@ -1757,6 +1757,7 @@ footer .hashtag {
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
+    
    
 }
 
@@ -1827,7 +1828,7 @@ footer .hashtag {
     box-sizing: border-box;
 }
 
-.couple-avatar {
+/* .couple-avatar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1852,7 +1853,7 @@ footer .hashtag {
     justify-content: center;
     z-index: 2;
     margin: 0 5px;
-}
+} */
 
 /* --- MOBILE RESPONSIVE OPTIMIZATIONS (Screens under 576px) --- */
 @media (max-width: 576px) {
@@ -1887,8 +1888,8 @@ footer .hashtag {
 
     /* Shrink Mandap / Havan image container for phones */
     .center-stage img {
-        width: 45px !important;
-        height: 45px !important;
+        width: 80px !important;
+        height: 80px !important;
     }
 
     .floating-garland {
