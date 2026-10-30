@@ -11,9 +11,72 @@
 </head>
 <body>
 
+    <!-- Royal Loading Screen -->
+<!-- Royal Loading Screen (Golden & Silver Theme) -->
+<!-- Royal Loading Screen (Golden & Silver Theme with Floating Sparkles) -->
+<!-- Royal Loading Screen (Animated Metallic Gold & Silver Theme) -->
+<div id="pagePreloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at center, #2c2b30 0%, #151417 60%, #0a090b 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.5s ease; color: #f5f5f7; text-align: center; padding: 20px; overflow: hidden;">
+    
+    <!-- Animated Glowing Background Pulse Effect -->
+    <div style="position: absolute; width: 320px; height: 320px; background: radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; animation: bgPulse 3s infinite ease-in-out; z-index: 1;"></div>
+
+    <!-- Background Floating Particles -->
+    <div class="royal-particle" style="top: 10%; left: 20%; animation-duration: 4s; animation-delay: 0s;">✨</div>
+    <div class="royal-particle" style="top: 80%; left: 75%; animation-duration: 5s; animation-delay: 1s;">🌟</div>
+    <div class="royal-particle" style="top: 30%; left: 85%; animation-duration: 6s; animation-delay: 2s;">✨</div>
+    <div class="royal-particle" style="top: 70%; left: 15%; animation-duration: 4.5s; animation-delay: 1.5s;">🌟</div>
+    <div class="royal-particle" style="top: 15%; left: 60%; animation-duration: 5.5s; animation-delay: 0.5s;">✨</div>
+    <div class="royal-particle" style="top: 55%; left: 35%; animation-duration: 5.5s; animation-delay: 1.2s;">✨</div>
+    <div class="royal-particle" style="top: 85%; left: 35%; animation-duration: 4.8s; animation-delay: 0.8s;">🌟</div>
+
+    <!-- Content -->
+    <div style="font-size: 3rem; margin-bottom: 15px; animation: pulse 1.5s infinite; filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5)); z-index: 2;">🤴💖👸</div>
+    
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 8px; background: linear-gradient(135deg, #ffd700, #ffffff, #d4af37); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; z-index: 2;">Abhishek & Priya's Wedding</h2>
+    
+    <p style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: #c0c0c0; letter-spacing: 1.5px; margin-bottom: 25px; text-transform: uppercase; z-index: 2;">Preparing Your Royal Experience...</p>
+    
+    <!-- Shimmering Gold & Silver Spinner -->
+    <div style="width: 45px; height: 45px; border: 4px solid rgba(192, 192, 192, 0.2); border-top: 4px solid #ffd700; border-right: 4px solid #e0e0e0; border-radius: 50%; animation: spin 1s linear infinite; box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); z-index: 2;"></div>
+</div>
+
+<style>
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+@keyframes bgPulse {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.35); opacity: 0.85; }
+}
+
+/* Floating Sparkle Animation */
+.royal-particle {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    animation: floatParticle infinite ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0px) scale(0.8);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-25px) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0px) scale(0.8);
+        opacity: 0.2;
+    }
+}
+</style>
     <!--AUDIO TAG-->
-    <audio id="weddingAudio" loop preload="auto">
-    <source src="assets/sahilmadan-wedding-invitation-421393.mp3" type="audio/mpeg">
+    <audio id="weddingAudio"   loop preload="none" >
+    <source src="assets/sahilmadan-wedding-invitation-421393.mp3" type="audio/mpeg" >
     Your browser does not support the audio element.
 </audio>
 
@@ -78,7 +141,7 @@
             <li><a href="#countdown" onclick="closeMenu()">Countdown</a></li>
             <li><a href="#schedule" onclick="closeMenu()">Schedule</a></li>
              <li><a href="#seven-pheras" onclick="closeMenu()">Varmala</a></li>
-            <li><a href="#rsvp" onclick="closeMenu()">RSVP</a></li>
+            <li><a href="#selfie" onclick="closeMenu()">Photo</a></li>
         </ul>
     </nav>
 
@@ -101,7 +164,20 @@
         <!-- Floating Magic Sparks -->
         <div class="floating-elements" id="floatingElements" style="z-index: 2;"></div>
 
-        <p class="subtitle">25 November 2026 · GM Resort</p>
+<div style="margin-bottom: 20px;" class="subtitle">
+    <span style="display: inline-flex; align-items: center; gap: 8px; color: #ffffff; padding: 7px 20px; border-radius: 25px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; border: 1px solid rgba(212, 175, 55, 0.7); box-shadow: 0 4px 15px rgba(0,0,0,0.3); backdrop-filter: blur(4px);">
+        ✨ Warmly Inviting You to the Grand Celebration of Our Marriage ✨              
+    </span>
+    <br>
+    <span class="venue-date-badge" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; color: #ffffff; padding: 7px 20px; border-radius: 25px; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; border: 1px solid rgba(212, 175, 55, 0.7); box-shadow: 0 4px 15px rgba(0,0,0,0.3); backdrop-filter: blur(4px); margin-top: 10px; text-align: center;">
+        <!-- Desktop elements -->
+        <span class="desktop-venue">✨ GM Resort • 🗓️ 25 November 2026 ✨</span>
+        
+        <!-- Mobile-only split elements -->
+        <span class="mobile-venue">✨ GM Resort ✨</span> 
+        <span class="mobile-date">🗓️ 25 November 2026</span>
+    </span>
+</div>
         <h1 class="cursive-name">Abhishek & Priya</h1>
         <p class="tagline">Blessed by divine grace, uniting in eternal love like Ram & Sita</p>
         
@@ -111,7 +187,7 @@
         </div>
 
         <p class="hashtag">#AbhiWedsPriya</p>
-        <a href="#rsvp" class="btn">Join the Celebration</a>
+        
 
         <!-- INCREASED FLOATING RIBBON SIZE IN DESKTOP MODE -->
         <div class="hero-bottom-ribbon">
@@ -132,49 +208,49 @@
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4240 (1).jpg" alt="Memory 1">
+                    <img src="assets/0M2A4240 (1).jpg" loading="lazy" alt="Memory 1">
                 </div>
             </div>
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4284.jpg" alt="Memory 2">
+                    <img src="assets/0M2A4284.jpg" loading="lazy" alt="Memory 2">
                 </div>
             </div>
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4299.jpg" alt="Memory 3">
+                    <img src="assets/0M2A4299.jpg" loading="lazy" alt="Memory 3">
                 </div>
             </div>
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4452.jpg" alt="Memory 4">
+                    <img src="assets/0M2A4452.jpg" loading="lazy" alt="Memory 4">
                 </div>
             </div>
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4624.jpg" alt="Memory 5">
+                    <img src="assets/0M2A4624.jpg" loading="lazy" alt="Memory 5">
                 </div>
             </div>
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4640.jpg" alt="Memory 6">
+                    <img src="assets/0M2A4640.jpg" loading="lazy" alt="Memory 6">
                 </div>
             </div>
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4721.jpg" alt="Memory 7">
+                    <img src="assets/0M2A4721.jpg" loading="lazy" alt="Memory 7">
                 </div>
             </div>
 
             <div class="royal-polaroid-card">
                 <div class="polaroid-img-wrapper">
-                    <img src="assets/0M2A4452 (1).jpg" alt="Memory 8">
+                    <img src="assets/0M2A4452 (1).jpg" loading="lazy" alt="Memory 8">
                 </div>
             </div>
         </div>
@@ -202,6 +278,7 @@
         </div>
 
         <!-- Family Tab Content -->
+      <!-- Family Tab Content -->
         <div class="family-tab-content active" id="tab-family">
             <div class="creative-family-grid">
                 <!-- Groom's Family Card -->
@@ -222,10 +299,11 @@
                     <h3>Garg Family</h3>
                     <p class="family-tagline">"Rooted in tradition, bounded by warmth & unconditional love"</p>
                     
-                    <div class="family-members-tags">
-                        <span class="member-badge">⚜️ Parents</span>
-                        <span class="member-badge">👴 Elders</span>
-                        <span class="member-badge">💫 Siblings</span>
+                    <!-- Beautifully Styled Royal Parents Box -->
+                    <div style="background: linear-gradient(135deg, rgba(255,253,240,0.9), rgba(254,243,226,0.95)); border: 1.5px solid #d4af37; border-radius: 14px; padding: 20px; margin: 15px 0; box-shadow: 0 4px 15px rgba(212,175,55,0.15); text-align: center;">
+                        <p style="font-family: 'Poppins', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #8b1d28; font-weight: 700; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 6px;">Parents of the Groom</p>
+                        <p style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: hsl(354, 64%, 20%); font-weight: 700; margin: 6px 0;">Father : Mr. Hardeep Kumar Garg</p>
+                        <p style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: hsl(354, 64%, 20%); font-weight: 700; margin: 6px 0;">Mother : Mrs. Meenu Garg</p>
                     </div>
 
                     <div class="family-blessing-quote">
@@ -252,10 +330,11 @@
                     <h3>Bansal Family</h3>
                     <p class="family-tagline">"Enfolded in grace, laughter & eternal family affection"</p>
                     
-                    <div class="family-members-tags">
-                        <span class="member-badge">🌺 Parents</span>
-                        <span class="member-badge">👵 Elders</span>
-                        <span class="member-badge">✨ Siblings</span>
+                    <!-- Beautifully Styled Royal Parents Box -->
+                    <div style="background: linear-gradient(135deg, rgba(255,253,240,0.9), rgba(254,243,226,0.95)); border: 1.5px solid #d4af37; border-radius: 14px; padding: 20px; margin: 15px 0; box-shadow: 0 4px 15px rgba(212,175,55,0.15); text-align: center;">
+                        <p style="font-family: 'Poppins', sans-serif; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #8b1d28; font-weight: 700; margin-bottom: 12px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 6px;">Parents of the Bride</p>
+                        <p style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: hsl(354, 64%, 20%); font-weight: 700; margin: 6px 0;">Father : Mr. Raj Kumar Bansal</p>
+                        <p style="font-family: 'Playfair Display', serif; font-size: 1.15rem; color: hsl(354, 64%, 20%); font-weight: 700; margin: 6px 0;">Mother : Mrs. Manju Bansal</p>
                     </div>
 
                     <div class="family-blessing-quote">
@@ -412,47 +491,38 @@
         <p class="section-subtitle">A magnificent celebration woven with sacred rituals, music, and vibrant joy</p>
 
         <div class="schedule-grid">
+
+               <!-- Sangeet Card -->
+            <div class="schedule-card">
+                <div>
+                    <span class="schedule-badge-top">Grand Evening</span>
+                    <div class="schedule-icon-frame">🎵</div>
+                    <h3>Sangeet Celebration</h3>
+                    <div class="schedule-time-badge">7:00 PM · 23 Nov 2026</div>
+                    <p class="schedule-desc">A dazzling night of high-energy dance performances and royal feasts.</p>
+                </div>
+                <div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Vinay+Vaatika+Bhatta+Colony+Hanumangarh+Rajasthan+335512" target="_blank" class="link-btn">View Venue Map</a>
+                </div>
+            </div>
+
             <!-- Haldi Card -->
             <div class="schedule-card">
                 <div>
                     <span class="schedule-badge-top">Morning Ritual</span>
                     <div class="schedule-icon-frame" style="background: radial-gradient(circle, #fff59d 0%, #ffeb3b 60%, #fbc02d 100%); box-shadow: 0 0 20px rgba(255, 235, 59, 0.8), inset 0 0 10px #ffffff;">💛</div>
                     <h3>Haldi Ceremony</h3>
-                    <div class="schedule-time-badge">10:00 AM · 24 Nov 2026</div>
+                    <div class="schedule-time-badge">03:00 PM · 24 Nov 2026</div>
                     <p class="schedule-desc">Drenched in vibrant turmeric glow, joyful laughter, and familial blessings.</p>
                 </div>
                 <div>
-                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Vinay+Vaatika+Bhatta+Colony+Hanumangarh+Rajasthan+335512" target="_blank" class="link-btn">View Venue Map</a>
                 </div>
             </div>
 
-            <!-- Mehendi Card -->
-            <div class="schedule-card">
-                <div>
-                    <span class="schedule-badge-top">Afternoon Art</span>
-                    <div class="schedule-icon-frame">🌿</div>
-                    <h3>Mehendi Night</h3>
-                    <div class="schedule-time-badge">4:00 PM · 24 Nov 2026</div>
-                    <p class="schedule-desc">An enchanting evening adorned with intricate henna designs and folk melodies.</p>
-                </div>
-                <div>
-                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
-                </div>
-            </div>
+            
 
-            <!-- Sangeet Card -->
-            <div class="schedule-card">
-                <div>
-                    <span class="schedule-badge-top">Grand Evening</span>
-                    <div class="schedule-icon-frame">🎵</div>
-                    <h3>Sangeet Celebration</h3>
-                    <div class="schedule-time-badge">7:00 PM · 24 Nov 2026</div>
-                    <p class="schedule-desc">A dazzling night of high-energy dance performances and royal feasts.</p>
-                </div>
-                <div>
-                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
-                </div>
-            </div>
+         
 
             <!-- Wedding Card -->
             <div class="schedule-card">
@@ -460,11 +530,11 @@
                     <span class="schedule-badge-top">Sacred Union</span>
                     <div class="schedule-icon-frame">💍</div>
                     <h3>Wedding Ceremony</h3>
-                    <div class="schedule-time-badge">7:00 PM · 25 Nov 2026</div>
+                    <div class="schedule-time-badge">8:00 PM · 25 Nov 2026</div>
                     <p class="schedule-desc">Sacred pheras, eternal vows, and divine blessings under the floral mandap.</p>
                 </div>
                 <div>
-                    <a href="https://maps.google.com" target="_blank" class="link-btn">View Venue Map</a>
+                    <a href="https://www.google.com/maps/place/?q=place_id:ChIJL5n6b1DzFjkRBq65AoYZm3I" target="_blank" class="link-btn">View Venue Map</a>
                 </div>
             </div>
         </div>
@@ -532,38 +602,54 @@
 
     </div>
 </section>
-    <!-- RSVP SECTION -->
-    <section id="rsvp" class="rsvp-section">
+   
+<section class="photo-booth-card" id="selfie">
+    <span class="sparkle-icon">🤴🏼💖👸🏻</span>
+    <h2 class="header-title">Royal Photo Booth</h2>
+    <p class="header-sub">Capture your special memory at Abhishek & Priya's Wedding!</p>
+
+    <!-- Viewfinder Area -->
+    <div class="viewfinder-box">
+        <!-- Live Stream Video Feed -->
+        <video id="webcamVideo" autoplay playsinline></video>
         
-        <h2 class="section-title">RSVP</h2>
-        <p class="section-subtitle">Your presence is our greatest gift</p>
+        <!-- File Upload Preview -->
+        <img id="uploadedImgPreview" alt="Uploaded Preview" />
 
-        <div class="rsvp-form">
-            <form onsubmit="event.preventDefault(); alert('Thank you for your response!');">
-                <div class="form-group">
-                    <label>Guest Name *</label>
-                    <input type="text" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label>Number of Guests *</label>
-                    <input type="number" min="1" value="1" required>
-                </div>
-                <div class="form-group">
-                    <label>Will you attend? *</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="attendance" required> Yes</label>
-                        <label><input type="radio" name="attendance" required> No</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Message for the couple</label>
-                    <textarea rows="3" placeholder="Share your blessings..."></textarea>
-                </div>
-                <button type="submit" class="btn">Send RSVP</button>
-            </form>
+        <!-- Exact Transparent Prop Frame Overlay -->
+        <img id="propOverlayImg" src="assets/finalframe.png" alt="Royal Wedding Prop Frame" class="prop-overlay-element" />
+
+        <!-- Camera Permission Overlay -->
+        <div id="permissionOverlay" class="permission-overlay">
+            <span class="camera-icon">📸</span>
+            <p class="permission-title">Camera Access Required</p>
+            <p class="permission-sub">Tap below to enable your camera and capture your memory!</p>
+            <button class="permission-btn" onclick="requestCameraPermission()">Enable Camera</button>
         </div>
-    </section>
+    </div>
 
+    <!-- Interactive Buttons -->
+    <div class="controls-group">
+        <button id="toggleCamBtn" class="btn-action" onclick="toggleCamera()"> 📸 Turn Camera On</button>
+        
+        <label class="btn-action">
+            📁 Upload Photo
+            <input type="file" accept="image/*" onchange="handleFileUpload(event)" style="display: none;">
+        </label>
+
+        <button class="btn-action btn-download" onclick="captureAndDownload()">⬇️ Snap & Download</button>
+    </div>
+
+    <div id="statusMessage">Camera is turned off.</div>
+
+    <!-- Hidden Output Canvas for Rendering Final Image -->
+    <canvas id="canvasOutput" style="display: none;"></canvas>
+</section>
+
+<!-- Custom JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
                 <!-- Footer -->
     <footer style="position: relative; overflow: hidden; padding: 25px 20px; background: radial-gradient(circle at center, #3a0d12 0%, #280a0e 100%);">
         
@@ -572,6 +658,14 @@
         <p style="font-size: 0.9rem; letter-spacing: 2px; color: var(--light-gold); text-transform: uppercase; margin-bottom: 4px;">25 November 2026 · GM Resort</p>
         <p style="font-size: 0.8rem; color: #d0c0b0; font-style: italic; margin-bottom: 8px;">We eagerly await your blessings and gracious presence</p>
         <p class="hashtag" style="font-size: 1rem; color: var(--primary-gold); letter-spacing: 3px; margin-bottom: 0;">#AbhiWedsPriya</p>
+
+        <div class="creator-watermark-badge">
+  <span class="watermark-icon">✨</span>
+  <span class="watermark-text">
+    Crafted & Developed by <strong class="creator-name">RK_DEEPAK</strong>
+  </span>
+  <span class="watermark-icon">✨</span>
+</div>
     </footer>
 
     <!-- Scripts -->

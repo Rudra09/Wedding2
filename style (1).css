@@ -206,6 +206,7 @@ nav {
     transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, background 0.3s ease;
     transform-origin: center center;
     position: relative;
+    margin-top: 3px;
 }
 .menu-toggle::before {
     content: '';
@@ -1854,6 +1855,20 @@ footer .hashtag {
     z-index: 2;
     margin: 0 5px;
 } */
+ .couple-alignment-container, .varmala-flex-row {
+    display: flex;
+    align-items: center;    /* This vertically centers Abhishek, Mandap, and Priya perfectly */
+    justify-content: center;
+    gap: 40px;              /* Adjust spacing between elements */
+}
+
+/* Ensure individual person items maintain equal layout bounds */
+.person-card, .groom-box, .bride-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
 /* --- MOBILE RESPONSIVE OPTIMIZATIONS (Screens under 576px) --- */
 @media (max-width: 576px) {
@@ -1915,6 +1930,7 @@ footer .hashtag {
         font-size: 0.95rem !important;
     }
 }
+
 /* Rose Petal Shower Animation */
 .petal-container {
     position: absolute;
@@ -2022,4 +2038,323 @@ footer .hashtag {
     font-size: 1.3rem;
     animation: sparkleAnim linear forwards;
     opacity: 0.95;
+}
+
+
+
+.photo-booth-card {
+    background: linear-gradient(135deg, rgba(255, 253, 245, 0.98), rgba(255, 245, 230, 0.98));
+    border: 2px solid #d4af37;
+    border-radius: 20px;
+    max-width: 580px;
+    width: 95%;
+    padding: 22px 18px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(212, 175, 55, 0.25);
+   
+    margin: auto;
+     margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.sparkle-icon {
+    font-size: 1.8rem;
+}
+
+.header-title {
+    font-family: 'Playfair Display', serif;
+    color: #58181f;
+    font-size: 1.85rem;
+    margin-bottom: 4px;
+}
+
+.header-sub {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+/* Viewfinder Box */
+.viewfinder-box {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 420px; /* Square ratio to match your prop image perfectly */
+    margin: 15px auto;
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 3px solid #d4af37;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+    display: block !important;
+}
+
+#webcamVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Video sits at the bottom layer */
+}
+
+#uploadedImgPreview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Uploaded photo sits at the bottom layer */
+}
+
+.prop-overlay-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    pointer-events: none;
+    z-index: 5; /* Transparent prop frame sits on top so video shows through the center */
+}
+
+.permission-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(43, 11, 16, 0.95);
+    color: #ffd700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    z-index: 20;
+}
+
+.camera-icon {
+    font-size: 2rem;
+    margin-bottom: 6px;
+}
+
+.permission-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.permission-sub {
+    font-size: 0.78rem;
+    color: #ddd;
+    margin-top: 4px;
+    max-width: 260px;
+    text-align: center;
+}
+
+.permission-btn {
+    background: linear-gradient(135deg, #d4af37, #aa7c11);
+    color: #3b0a0e;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.controls-group {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-action {
+    background: linear-gradient(135deg, #58181f, #8b1d28);
+    color: #ffd700;
+    border: 1px solid #d4af37;
+    padding: 10px 20px;
+    border-radius: 22px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(88, 24, 31, 0.2);
+    transition: transform 0.2s;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+}
+
+.btn-download {
+    background: linear-gradient(135deg, #27ae60, #1e8449);
+    color: #ffffff;
+    border: 1px solid #2ecc71;
+}
+
+#statusMessage {
+    margin-top: 12px;
+    font-size: 0.82rem;
+    color: #8b1d28;
+    font-weight: bold;
+}
+
+/* Default view for larger screens: everything stays on one line */
+.venue-date-badge {
+    flex-wrap: nowrap;
+}
+
+.date-text {
+    display: inline;
+}
+
+/* Mobile view below 500px: shifts the date to a new line and wraps the badge naturally */
+/* By default (Desktop > 500px): show single-line badge, hide mobile-split elements */
+.mobile-venue, .mobile-date {
+    display: none;
+}
+.desktop-venue {
+    display: inline;
+}
+
+/* Mobile view (< 500px): hide single-line badge, show stacked mobile elements */
+@media (max-width: 500px) {
+    .venue-date-badge {
+        flex-direction: column;
+        line-height: 1.5;
+        padding: 10px 15px !important;
+    }
+
+    .desktop-venue {
+        display: none;
+    }
+
+    .mobile-venue {
+        display: inline;
+    }
+
+    .mobile-date {
+        display: block;
+        margin-top: 2px;
+    }
+}
+#webcamVideo,
+#uploadedImgPreview,
+.default-photo-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Soft smooth blur combined with bright wedding styling */
+    filter: brightness(1.08) contrast(1.05) saturate(1.15)  drop-shadow(0 0 8px rgba(255, 215, 0, 0.3));
+}
+
+/* Container styling for the watermark badge */
+.creator-watermark-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 22px;
+    margin: 25px auto;
+    background: linear-gradient(135deg, rgba(20, 19, 22, 0.92), rgba(44, 43, 48, 0.95));
+    border: 1.5px solid #d4af37;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 12px rgba(212, 175, 55, 0.25);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.92rem;
+    color: #e0e0e0;
+    letter-spacing: 0.8px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: all 0.4s ease;
+}
+
+/* Metallic gold shining text styling for RK DEEPAK */
+.creator-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 0.98rem;
+    letter-spacing: 1.5px;
+    background: linear-gradient(
+        110deg, 
+        #d4af37 0%, 
+        #ffd700 25%, 
+        #ffffff 50%, 
+        #ffd700 75%, 
+        #d4af37 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShine 3.5s linear infinite;
+    text-transform: uppercase;
+}
+
+/* Moving light streak across the badge background */
+.creator-watermark-badge::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 215, 0, 0.18) 50%,
+        transparent 70%
+    );
+    transform: rotate(30deg);
+    animation: backgroundGleam 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Sparkle icon subtle scaling animation */
+.watermark-icon {
+    font-size: 0.95rem;
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+    animation: sparklePulse 2s ease-in-out infinite alternate;
+}
+
+/* Hover effect */
+.creator-watermark-badge:hover {
+    transform: translateY(-2px);
+    border-color: #ffd700;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* --- Keyframe Animations --- */
+
+/* Text metallic gradient motion */
+@keyframes goldShine {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}
+
+/* Diagonal light sheen effect */
+@keyframes backgroundGleam {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+
+/* Sparkle glow pulse */
+@keyframes sparklePulse {
+    0% { opacity: 0.5; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1.15); }
 }
