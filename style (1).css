@@ -2183,9 +2183,15 @@ footer .hashtag {
     border: 3px solid #d4af37;
     box-shadow: 0 8px 22px rgba(0,0,0,0.35);
     display: block !important;
-    background-position-x: 8px;
+    background-position-x: 16px;
     background-position-y: 60px;
     background-repeat: no-repeat;
+}
+
+@media (max-width: 500px) {
+    .viewfinder-box {
+        background-position-x: -5px;
+    }
 }
 
 #webcamVideo {
