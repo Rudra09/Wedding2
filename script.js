@@ -126,27 +126,27 @@
         const countdownPetalsContainer = document.getElementById('countdownPetalsContainer');
         createFallingPetals(countdownPetalsContainer, petalCount);
 
-        // Helper to populate floating items in specific sections
-        function populateSectionDecor(containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            const items = ['🌸', '💛', '🤍', '✨', '🫧', '💖'];
-            const colors = ['#ffd700', '#e0e0e0', '#ffffff', '#f3e5ab', '#ffea79'];
+        // // Helper to populate floating items in specific sections
+        // function populateSectionDecor(containerId) {
+        //     const container = document.getElementById(containerId);
+        //     if (!container) return;
+        //     const items = ['🌸', '💛', '🤍', '✨', '🫧', '💖'];
+        //     const colors = ['#ffd700', '#e0e0e0', '#ffffff', '#f3e5ab', '#ffea79'];
             
-            const count = window.innerWidth > 992 ? 28 : 14;
+        //     const count = window.innerWidth > 992 ? 28 : 14;
 
-            for (let i = 0; i < count; i++) {
-                const el = document.createElement('div');
-                el.classList.add('decor-item');
-                el.innerText = items[Math.floor(Math.random() * items.length)];
-                el.style.left = `${Math.random() * 95}vw`;
-                el.style.color = colors[Math.floor(Math.random() * colors.length)];
-                el.style.fontSize = `${Math.random() * 1.0 + 1.0}rem`;
-                el.style.animationDuration = `${Math.random() * 6 + 8}s`;
-                el.style.animationDelay = `${Math.random() * 6}s`;
-                container.appendChild(el);
-            }
-        }
+        //     for (let i = 0; i < count; i++) {
+        //         const el = document.createElement('div');
+        //         el.classList.add('decor-item');
+        //         el.innerText = items[Math.floor(Math.random() * items.length)];
+        //         el.style.left = `${Math.random() * 95}vw`;
+        //         el.style.color = colors[Math.floor(Math.random() * colors.length)];
+        //         el.style.fontSize = `${Math.random() * 1.0 + 1.0}rem`;
+        //         el.style.animationDuration = `${Math.random() * 6 + 8}s`;
+        //         el.style.animationDelay = `${Math.random() * 6}s`;
+        //         container.appendChild(el);
+        //     }
+        // }
 
         // familyDecorContainer deprecated, using familyPetalsContainer
 
@@ -164,7 +164,7 @@
             bubble.style.height = `${size}px`;
             bubble.style.left = `${Math.random() * 100}vw`;
             bubble.style.animationDuration = `${Math.random() * 8 + 14}s`;
-            bubble.style.animationDelay = `${Math.random() * 6}s`;
+            bubble.style.animationDelay = `${Math.random() * 5}s`;
             bubblesContainer.appendChild(bubble);
         }
 
@@ -297,7 +297,7 @@
         setInterval(createTwinklingBurst, window.innerWidth > 992 ? 1600 : 2500);
 
         // Countdown Timer
-        const weddingDate = new Date(2026, 10, 25, 0, 0, 0).getTime();
+        const weddingDate = new Date("November 26, 2026 01:00:00").getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -431,39 +431,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-let currentPhera = 0;
+let currentPhera = -1;
 let isComplete = false; // Tracks whether the ceremony has finished
 
 const realPherasData = [
+    
     {
         title: "Nourishment & Provision 🍚",
         vow: "Together we will share the food, nourishment, and financial responsibility to build a prosperous and healthy home.",
-        btnText: "🔥 Take 2nd Phera"
+        btnText: "🔥 Take 1st Phera"
     },
     {
-        title: " Strength & Physical Wellness 💪",
+        title: "Strength & Physical Wellness 💪",
         vow: "Together we will cultivate physical and mental strength, supporting each other through all life's challenges.",
-        btnText: "🔥 Take 3rd Phera"
+        btnText: "🔥 Take 2nd Phera"
     },
     {
         title: "Wealth, Prosperity & Spiritual Growth 🌟",
         vow: "Together we will strive to earn honest wealth, practice charity, and grow in wisdom and spiritual devotion.",
-        btnText: "🔥 Take 4th Phera"
+        btnText: "🔥 Take 3rd Phera"
     },
     {
         title: "Family Joy, Happiness & Harmony 🏡",
         vow: "Together we will bring joy, mutual trust, and deep respect to each other and our families.",
-        btnText: "🔥 Take 5th Phera"
+        btnText: "🔥 Take 4th Phera"
     },
     {
         title: "Noble Offspring & Legacy 👶",
         vow: "Together we pray for noble, healthy children, and pledge to guide them with good values and unconditional love.",
-        btnText: "🔥 Take 6th Phera"
+        btnText: "🔥 Take 5th Phera"
     },
     {
         title: "Longevity & Seasons of Life 🌸",
         vow: "Together we pledge to stand side-by-side through all seasons of life, sharing every joy and sorrow gracefully.",
-        btnText: "🔥 Take Final 7th Phera"
+        btnText: "🔥 Take 6th Phera"
     },
     {
         title: "Eternal Companionship & Friendship 🤝",
@@ -485,71 +486,68 @@ function nextPheraStep() {
     const btn = document.getElementById('pheraBtn');
     const petalContainer = document.getElementById('petalContainer');
 
-    // If ceremony was complete, clicking "Replay" resets everything back to Step 1 cleanly
+    // 1. REPLAY / RESET LOGIC: Reset back cleanly to Phera 1
     if (isComplete) {
-        currentPhera = 0;
         isComplete = false;
 
-        // Switch back views: Show ceremony arena, hide final combined picture
         if (ceremonyArena) ceremonyArena.style.display = 'flex';
         if (finalCoupleContainer) finalCoupleContainer.style.display = 'none';
 
-        groom.style.transform = `translateX(0px)`;
-        bride.style.transform = `translateX(0px)`;
+        const isMobile = window.innerWidth <= 576;
+        const stepMultiplier = isMobile ? 4 : 8;
+        const moveOffset = 1 * stepMultiplier; 
+
+        groom.style.transform = `translateX(${moveOffset}px)`;
+        bride.style.transform = `translateX(-${moveOffset}px)`;
         garland.innerText = '🌹🏵️🌹🏵️🌹'; 
         garland.style.transform = 'scale(1)';
         
-        // Reset to Step 1 data and accurate 1/7th progress bar width
+        currentPhera = 0; // Reset index to 0 for Phera 1
         const stepData = realPherasData[0];
+        
         badge.innerText = `SACRED PHERA 1 OF 7`;
         title.innerText = stepData.title;
         vow.innerText = `"${stepData.vow}"`;
-        btn.innerText = stepData.btnText;
+        btn.innerText = stepData.btnText; // This correctly says "Take 2nd Phera"
         
         fill.style.width = `${(1 / 7) * 100}%`;
         petalContainer.innerHTML = ''; 
 
-        currentPhera = 0; // Keep at 0 so first click advances to Phera 1 / 2 properly
         return;
     }
 
-    // When the page first loads, if currentPhera is 0, we are currently viewing Step 1. 
-    // Clicking the button now should move us to Step 2 (index 1).
-    
-        if (currentPhera < 6) {
+    // 2. NORMAL PROGRESSION LOGIC
+    // If currentPhera is 0, incrementing to 1 loads realPherasData[1] (Phera 2)
+    if (currentPhera < 6) {
         currentPhera++; 
         const stepData = realPherasData[currentPhera];
-        const activePheraNum = currentPhera + 1; 
+        const activePheraNum = currentPhera + 1; // 2 through 7
 
-        // Check if screen is mobile (< 576px wide) to adjust walking distance safely
         const isMobile = window.innerWidth <= 576;
-        const stepMultiplier = isMobile ? 4 : 8; // Shorter steps on mobile to prevent overlapping
+        const stepMultiplier = isMobile ? 4 : 8; 
 
         const moveOffset = activePheraNum * stepMultiplier;
         groom.style.transform = `translateX(${moveOffset}px)`;
         bride.style.transform = `translateX(-${moveOffset}px)`;
 
-        // Make the floating garland pulse / scale up slightly
+        // Fixed syntax error from missing '*' multiplication operator
         garland.style.transform = `scale(${1 + (activePheraNum * 0.04)})`;
 
-        // Update Progress Bar accurately
+        // Update Progress Bar
         const progressPercent = (activePheraNum / 7) * 100;
         fill.style.width = `${progressPercent}%`;
 
-        // Update Text
+        // Update Text & Button
         badge.innerText = `SACRED PHERA ${activePheraNum} OF 7`;
         title.innerText = stepData.title;
         vow.innerText = `"${stepData.vow}"`;
         btn.innerText = stepData.btnText;
 
-    
-
     } else if (currentPhera === 6) {
-        // FINAL 7th PHERA REACHED -> Hide Havan arena & show final couple picture with celebration
+        // FINAL 7th PHERA REACHED -> Show celebration screen
         if (ceremonyArena) ceremonyArena.style.display = 'none';
         if (finalCoupleContainer) finalCoupleContainer.style.display = 'block';
 
-        // Trigger Petal Shower Celebration
         triggerRosePetals();
 
         fill.style.width = '100%';
@@ -558,10 +556,9 @@ function nextPheraStep() {
         vow.innerText = '"By completing the seven steps, we have become companions for life. May our bond grow stronger with every passing day!"';
         btn.innerText = '🔄 Replay Sacred Pheras';
 
-        isComplete = true; // Lock state so the next click handles the reset
+        isComplete = true; 
     }
 }
-
 
 // Function to generate falling rose and marigold petals from all directions
 function triggerRosePetals() {
@@ -589,6 +586,7 @@ let activeSource = 'camera';
 let uploadedImageObj = new Image();
 let isCameraActive = false;
 let currentStream = null;
+let currentFacingMode = 'user'; // Tracks 'user' (front) or 'environment' (rear)
 
 async function requestCameraPermission() {
     const statusDiv = document.getElementById('statusMessage');
@@ -597,12 +595,13 @@ async function requestCameraPermission() {
     const uploadedImg = document.getElementById('uploadedImgPreview');
     const defaultCoupleImg = document.getElementById('defaultCoupleImg');
     const toggleBtn = document.getElementById('toggleCamBtn');
+    const flipBtn = document.getElementById('flipCamBtn'); // Reference flip button
 
     statusDiv.textContent = "Requesting camera permission...";
 
     try {
         currentStream = await navigator.mediaDevices.getUserMedia({ 
-            video: { facingMode: 'user', width: { ideal: 1920 }, height: { ideal: 1080 } }, 
+            video: { facingMode: currentFacingMode, width: { ideal: 1920 }, height: { ideal: 1080 } }, 
             audio: false 
         });
 
@@ -614,7 +613,9 @@ async function requestCameraPermission() {
         uploadedImg.style.display = 'none';
         video.style.display = 'block';
         if (overlay) overlay.style.display = 'none';
+        
         toggleBtn.textContent = "📹 Turn Camera Off";
+        if (flipBtn) flipBtn.style.display = "inline-block"; // Show flip button when active
 
         statusDiv.style.color = '#27ae60';
         statusDiv.textContent = "Camera active! Pose and tap Snap & Download.";
@@ -625,10 +626,42 @@ async function requestCameraPermission() {
     }
 }
 
+// 🔄 New function to flip between front and rear cameras
+async function flipCamera() {
+    if (!isCameraActive) return;
+
+    // Toggle facing mode preference
+    currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+
+    // Stop current tracks
+    if (currentStream) {
+        currentStream.getTracks().forEach(track => track.stop());
+    }
+
+    const video = document.getElementById('webcamVideo');
+    const statusDiv = document.getElementById('statusMessage');
+
+    try {
+        currentStream = await navigator.mediaDevices.getUserMedia({ 
+            video: { facingMode: currentFacingMode, width: { ideal: 1920 }, height: { ideal: 1080 } }, 
+            audio: false 
+        });
+
+        video.srcObject = currentStream;
+        statusDiv.style.color = '#27ae60';
+        statusDiv.textContent = `Switched to ${currentFacingMode === 'user' ? 'front' : 'rear'} camera.`;
+    } catch (err) {
+        console.error("Error flipping camera:", err);
+        statusDiv.style.color = '#c0392b';
+        statusDiv.textContent = "Failed to switch camera view.";
+    }
+}
+
 function toggleCamera() {
     const video = document.getElementById('webcamVideo');
     const defaultCoupleImg = document.getElementById('defaultCoupleImg');
     const toggleBtn = document.getElementById('toggleCamBtn');
+    const flipBtn = document.getElementById('flipCamBtn');
     const statusDiv = document.getElementById('statusMessage');
 
     if (isCameraActive) {
@@ -643,6 +676,8 @@ function toggleCamera() {
         video.style.display = 'none';
 
         toggleBtn.textContent = "📹 Turn Camera On";
+        if (flipBtn) flipBtn.style.display = "none"; // Hide flip button when camera is off
+
         statusDiv.style.color = '#c0392b';
         statusDiv.textContent = "Camera is turned off.";
     } else {
@@ -654,6 +689,7 @@ function handleFileUpload(event) {
     const file = event.target.files[0];
     const statusDiv = document.getElementById('statusMessage');
     const toggleBtn = document.getElementById('toggleCamBtn');
+    const flipBtn = document.getElementById('flipCamBtn');
     const defaultCoupleImg = document.getElementById('defaultCoupleImg');
     
     if (file) {
@@ -661,6 +697,7 @@ function handleFileUpload(event) {
             currentStream.getTracks().forEach(track => track.stop());
             isCameraActive = false;
             toggleBtn.textContent = "📹 Turn Camera On";
+            if (flipBtn) flipBtn.style.display = "none";
         }
 
         const reader = new FileReader();
@@ -698,7 +735,7 @@ function captureAndDownload() {
     const h = canvas.height;
 
     // 1. Professional Studio Filter (Enhanced richness & clarity)
-    ctx.filter = 'brightness(1.15) contrast(1.10) saturate(1.00)';
+    ctx.filter = 'brightness(1.15) contrast(1.15) saturate(1.12)';
 
     // Robust Cover Math (Prevents stretching & keeps correct proportions)
     function drawCover(mediaElement, isVideo = false, isMirrored = false) {
@@ -735,9 +772,11 @@ function captureAndDownload() {
     }
 
     // 2. Draw User Image (Camera, Upload, or Default Photo)
+    // Only mirror the video if it's using the front camera (user mode), otherwise keep rear camera normal
+    const isVideoMirrored = (currentFacingMode === 'user');
     if (activeSource === 'camera' && isCameraActive) {
         const video = document.getElementById('webcamVideo');
-        drawCover(video, true, true);
+        drawCover(video, true, isVideoMirrored);
     } else if (activeSource === 'upload' && uploadedImageObj.src) {
         drawCover(uploadedImageObj, false, false);
     } else {
@@ -778,6 +817,7 @@ function captureAndDownload() {
     statusDiv.style.color = '#27ae60';
     statusDiv.textContent = "High-resolution royal photo downloaded successfully!";
 }
+
 // Hide preloader seamlessly once the page and assets load
 window.addEventListener('load', function() {
     const preloader = document.getElementById('pagePreloader');
@@ -785,6 +825,146 @@ window.addEventListener('load', function() {
         preloader.style.opacity = '0';
         setTimeout(() => {
             preloader.style.display = 'none';
-        }, 500); // Matches the 0.5s transition time
+        }, 500);
     }
 });
+
+
+
+// Helper function to create and append a single heart with smooth movement
+function initVowsFloatingHearts() {
+    const container = document.getElementById('vowsFloatingContainer');
+    if (!container) return;
+
+    container.innerHTML = '';
+    const heartCount = window.innerWidth > 992 ? 22 : 14;
+
+    for (let i = 0; i < heartCount; i++) {
+        createSingleVowHeart(container);
+    }
+}
+
+// Helper function to create and append a single heart with smooth multi-directional movement
+function createSingleVowHeart(container) {
+    const heart = document.createElement('div');
+    heart.className = 'floating-vow-heart';
+    
+    // 50/50 Mix of Gold (💛) and Silver (🤍) hearts
+    heart.innerText = Math.random() > 0.5 ? '💛' : '🤍';
+
+    // Consistent heart sizing for both desktop and mobile
+    const randomSize = Math.random() * 0.8 + 1.8; 
+    heart.style.fontSize = `${randomSize}rem`;
+
+    // Random positioning across the section (scatters them uniformly from top to bottom)
+    heart.style.left = `${Math.random() * 90 + 5}%`;
+    heart.style.top = `${Math.random() * 85 + 5}%`;
+    
+    // Multi-directional drift path values (same as desktop)
+    heart.style.setProperty('--moveX1', `${(Math.random() - 0.5) * 180}px`);
+    heart.style.setProperty('--moveY1', `${(Math.random() - 0.5) * 180}px`);
+    heart.style.setProperty('--moveX2', `${(Math.random() - 0.5) * 240}px`);
+    heart.style.setProperty('--moveY2', `${(Math.random() - 0.5) * 240}px`);
+    heart.style.setProperty('--moveX3', `${(Math.random() - 0.5) * 300}px`);
+    heart.style.setProperty('--moveY3', `${(Math.random() - 0.5) * 300}px`);
+
+    heart.style.animationDuration = `${Math.random() * 6 + 8}s`;
+    heart.style.animationDelay = `${Math.random() * 4}s`;
+
+    // Click or touch event: bursts 1 heart, triggers the unified message, and spawns 2 new hearts instantly!
+  heart.addEventListener('click', (e) => {
+        const rect = container.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        burstVowHeartAt(container, clickX, clickY);
+        heart.remove();
+
+        // Spawn BOTH replacement hearts at the exact same time
+        createSlowHeart(container);
+        createSlowHeart(container);
+    });
+
+    container.appendChild(heart);
+}
+
+function burstVowHeartAt(parentContainer, x, y) {
+    const congratsText = document.createElement('div');
+    congratsText.className = 'burst-congrats-text';
+    congratsText.innerHTML = `🎉 <strong style="color: #58181f; font-size: 1.05rem;">Congratulations!</strong> 🎉<br><span style="font-size: 0.95rem; font-weight: 600; color: #b8860b;">❤️ Abhishek & Priya ❤️</span>`;
+    congratsText.style.left = `${x}px`;
+    congratsText.style.top = `${y}px`;
+    parentContainer.appendChild(congratsText);
+
+    setTimeout(() => {
+        congratsText.remove();
+    }, 1200);
+
+    const symbols = ['✨', '💖', '💛', '🤍','❤️','💓','💗','💕'];
+    for (let i = 0; i < 16; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'heart-particle';
+        particle.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * 110 + 40;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.setProperty('--dx', `${dx}px`);
+        particle.style.setProperty('--dy', `${dy}px`);
+
+        parentContainer.appendChild(particle);
+
+        setTimeout(() => {
+            particle.remove();
+        }, 800);
+    }
+}
+
+// Initialize on load and resize
+window.addEventListener('DOMContentLoaded', initVowsFloatingHearts);
+window.addEventListener('resize', initVowsFloatingHearts);
+
+
+function createSlowHeart(container) {
+    const heart = document.createElement('div');
+    heart.className = 'floating-vow-heart spawning'; // Uses the slow fade-in class
+    
+    // 50/50 Mix of Gold (💛) and Silver (🤍) hearts
+    heart.innerText = Math.random() > 0.5 ? '💛' : '🤍';
+
+    const randomSize = Math.random() * 0.8 + 1.8; 
+    heart.style.fontSize = `${randomSize}rem`;
+
+    // Random positioning across the section
+    heart.style.left = `${Math.random() * 90 + 5}%`;
+    heart.style.top = `${Math.random() * 85 + 5}%`;
+    
+    // Multi-directional drift path values
+    heart.style.setProperty('--moveX1', `${(Math.random() - 0.5) * 180}px`);
+    heart.style.setProperty('--moveY1', `${(Math.random() - 0.5) * 180}px`);
+    heart.style.setProperty('--moveX2', `${(Math.random() - 0.5) * 240}px`);
+    heart.style.setProperty('--moveY2', `${(Math.random() - 0.5) * 240}px`);
+    heart.style.setProperty('--moveX3', `${(Math.random() - 0.5) * 300}px`);
+    heart.style.setProperty('--moveY3', `${(Math.random() - 0.5) * 300}px`);
+
+    heart.style.animationDuration = `1.2s, ${Math.random() * 6 + 8}s`;
+
+    // Click event for the new heart as well
+    heart.addEventListener('click', (e) => {
+        const rect = container.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+
+        burstVowHeartAt(container, clickX, clickY);
+        heart.remove();
+
+        createSlowHeart(container);
+        createSlowHeart(container);
+    });
+
+    container.appendChild(heart);
+}

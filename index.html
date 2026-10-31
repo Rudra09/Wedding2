@@ -459,10 +459,10 @@
     <!-- COUNTDOWN SECTION WITH GOLD & SILVER PETALS BACKGROUND -->
     <section id="countdown">
         
-        <h2 class="section-title">Counting Every Heartbeat</h2>
+        <h2 style="margin-bottom: 40px; " class="section-title"  >Counting Every Heartbeat</h2>
 
         
-        <div class="countdown-container">
+        <div class="countdown-container" >
             <div class="countdown-box">
                 <span class="number" id="days">00</span>
                 <span class="label">Days</span>
@@ -480,7 +480,7 @@
                 <span class="label">Seconds</span>
             </div>
         </div>
-<p class="countdown-footer"><span class="beating-heart">♥</span> &nbsp;Heartbeats between two hearts, racing to forever <span class="beating-heart">&nbsp;♥</span></p>
+<p class="countdown-footer" style="font-weight: bold;"><span class="beating-heart" style="font-style: normal;">❤️</span> &nbsp;Heartbeats between two hearts, racing to forever <span class="beating-heart" style="font-style: normal;">&nbsp;❤️</span></p>
         
     </section>
 
@@ -539,11 +539,15 @@
             </div>
         </div>
     </section>
-<section id="seven-pheras"  style="background: linear-gradient(135deg, #fdfbf7 0%, #f7efe2 50%, #fcedef 100%); position: relative; overflow: hidden; padding: 90px 6%; text-align: center;">
+<section id="seven-pheras" style="background: linear-gradient(135deg, #fdfbf7 0%, #f7efe2 50%, #fcedef 100%); position: relative; overflow: hidden; padding: 90px 6%; text-align: center;">
+    
+    <!-- 💛🤍 Multi-Directional Floating Gold & Silver Hearts Background Container -->
+    <div id="vowsFloatingContainer"></div>
+
     <h2 class="section-title">The Sacred 7 Vows & Varmala</h2>
     <p class="section-subtitle">Walk through the authentic Saptapadi vows with Abhishek & Priya step by step!</p>
 
-    <div style="max-width: 720px; margin: 0 auto; background: #ffffff; border: 2px solid var(--primary-gold, #d4af37); border-radius: 25px; padding: 35px 25px; box-shadow: 0 15px 40px rgba(88, 24, 31, 0.12); position: relative; overflow: hidden;">
+    <div style="max-width: 720px; margin: 0 auto; background: #ffffff; border: 2px solid var(--primary-gold, #d4af37); border-radius: 25px; padding: 35px 25px; box-shadow: 0 15px 40px rgba(88, 24, 31, 0.12); position: relative; overflow: hidden; z-index: 3;">
         
         <!-- Rose Petal Container for 7th Phera -->
         <div id="petalContainer" class="petal-container"></div>
@@ -563,7 +567,7 @@
                 
                 <!-- Havan Kund Image -->
                 <div class="sacred-fire" style="width: 120px; height: 100px; display: flex; align-items: center; justify-content: center;">
-                    <img  id="floatingGarland" class="floating-garland" src="assets/wife/aagni.png" alt="Havan Kund" style="width: 100%; height: 100%; object-fit: contain;">
+                    <img id="floatingGarland" class="floating-garland" src="assets/wife/aagni.png" alt="Havan Kund" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                
             </div>
@@ -597,14 +601,19 @@
 
         <!-- Interactive Action Button -->
         <button id="pheraBtn" onclick="nextPheraStep()" class="btn-phera">
-            🔥 Take 1st Phera
+            🔥 Start Sacred Vows
         </button>
 
     </div>
 </section>
+
+<!-- Interactive Congrats Popup Message Box (Place this right below your section or near the bottom of your body) -->
+<div id="vowCongratsPopup" class="vow-congrats-popup">
+  
+</div>
    
-<section class="photo-booth-card" id="selfie">
-    <span class="sparkle-icon">🤴🏼💖👸🏻</span>
+<<section class="photo-booth-card" id="selfie">
+    <span class="sparkle-icon">🤴💖👸</span>
     <h2 class="header-title">Royal Photo Booth</h2>
     <p class="header-sub">Capture your special memory at Abhishek & Priya's Wedding!</p>
 
@@ -630,15 +639,18 @@
 
     <!-- Interactive Buttons -->
     <div class="controls-group">
-        <button id="toggleCamBtn" class="btn-action" onclick="toggleCamera()"> 📸 Turn Camera On</button>
-        
-        <label class="btn-action">
-            📁 Upload Photo
-            <input type="file" accept="image/*" onchange="handleFileUpload(event)" style="display: none;">
-        </label>
+    <button id="toggleCamBtn" class="btn-action" onclick="toggleCamera()"> 📸 Turn Camera On</button>
+    
+    <!-- 🔄 Flip Camera Button -->
+    <button id="flipCamBtn" class="btn-action" onclick="flipCamera()" style="display: none;">🔄 Flip Camera</button>
+    
+    <label class="btn-action">
+        📁 Upload Photo
+        <input type="file" accept="image/*" onchange="handleFileUpload(event)" style="display: none;">
+    </label>
 
-        <button class="btn-action btn-download" onclick="captureAndDownload()">⬇️ Snap & Download</button>
-    </div>
+    <button class="btn-action btn-download" onclick="captureAndDownload()">⬇️ Snap & Download</button>
+</div>
 
     <div id="statusMessage">Camera is turned off.</div>
 
@@ -647,14 +659,16 @@
 </section>
 
 <!-- Custom JavaScript -->
+
 <script src="script.js"></script>
+
 </body>
 </html>
                 <!-- Footer -->
     <footer style="position: relative; overflow: hidden; padding: 25px 20px; background: radial-gradient(circle at center, #3a0d12 0%, #280a0e 100%);">
         
         <div style="font-size: 1.4rem; color: var(--primary-gold); margin-bottom: 6px; letter-spacing: 10px; text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);">✨ 🌟 ✨</div>
-        <p style="font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: #fff6d6; margin-bottom: 4px; text-shadow: 0 3px 12px rgba(0,0,0,0.8);">Abhishek & Priya</p>
+        <p style="font-family: 'Great Vibes', cursive; font-size: 2.3rem; color: #fff6d6; margin-bottom: 4px; text-shadow: 0 3px 12px rgba(0,0,0,0.8);">Abhishek&nbsp; & &nbsp;Priya</p>
         <p style="font-size: 0.9rem; letter-spacing: 2px; color: var(--light-gold); text-transform: uppercase; margin-bottom: 4px;">25 November 2026 · GM Resort</p>
         <p style="font-size: 0.8rem; color: #d0c0b0; font-style: italic; margin-bottom: 8px;">We eagerly await your blessings and gracious presence</p>
         <p class="hashtag" style="font-size: 1rem; color: var(--primary-gold); letter-spacing: 3px; margin-bottom: 0;">#AbhiWedsPriya</p>

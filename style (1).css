@@ -116,7 +116,7 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: swayString 5s ease-in-out infinite alternate;
+    animation: swayString 3s ease-in-out infinite alternate;
     transform-origin: top center;
 }
 
@@ -170,13 +170,6 @@ nav {
     100% { transform: scale(1); color: #d4af37; text-shadow: 0 0 5px rgba(212, 175, 55, 0.6); }
 }
 
-.beating-heart {
-    display: inline-block;
-    animation: heartbeat 1.4s ease-in-out infinite;
-    font-size: 1.5rem;
-    vertical-align: middle;
-    margin: 0 4px;
-}
 
 .nav-links a {
     text-decoration: none;
@@ -190,6 +183,44 @@ nav {
 
 .nav-links a:hover {
     color: var(--primary-gold);
+}
+
+/* Beating Heart Animation */
+.beating-heart {
+    display: inline-block;
+    color: #f01b42;
+      font-size: 1.5rem;
+    animation: heartThump 1.4s ease-in-out infinite;
+}
+
+@keyframes heartThump {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.25); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.18); }
+}
+
+/* Text Breathing / Pulsing Animation */
+.countdown-footer {
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.6px;
+    color: #dfc88a; /* Warm Gold Base */
+    display: inline-block;
+    transform-origin: center;
+    animation: textPulseBreath 3s ease-in-out infinite;
+}
+
+@keyframes textPulseBreath {
+    0%, 100% { 
+        transform: scale(1); 
+        color: #706e6e8b;
+    }
+    50% { 
+        transform: scale(1.03); /* Subtle text expansion */
+        color: #fed622;        /* Brightens up */
+    }
 }
 
 .menu-toggle {
@@ -383,18 +414,18 @@ header.hero {
 
 .bubble {
     position: absolute;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 215, 0, 0.3) 60%, rgba(212, 175, 55, 0.1) 100%);
+    background: radial-gradient(circle at 30% 30%, rgb(225, 224, 224), rgba(255, 217, 0, 0.964) 60%, rgba(212, 175, 55, 0.921) 100%);
     border: 1px solid rgba(255, 240, 150, 0.6);
     border-radius: 50%;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 215, 0, 0.3);
+    box-shadow: inset 0 0 10px rgb(186, 185, 185), 0 0 12px rgba(255, 217, 0, 0.956);
     animation: floatBubbleSlow linear infinite;
     opacity: 0.7;
 }
 
 @keyframes floatBubbleSlow {
     0% { transform: translateY(110vh) scale(0.6); opacity: 0; }
-    20% { opacity: 0.7; }
-    80% { opacity: 0.7; }
+    20% { opacity: 0.6; }
+    80% { opacity: 0.9; }
     100% { transform: translateY(-10vh) scale(1.1) translateX(20px); opacity: 0; }
 }
 
@@ -778,6 +809,28 @@ section {
     color: var(--text-muted);
     font-size: 1rem;
 }
+
+/* Heartbeat pulsing effect for countdown blocks */
+@keyframes royalAura {
+    0%, 100% {
+        border-color: rgba(212, 175, 55, 0.4);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(212, 175, 55, 0.05);
+    }
+    50% {
+        border-color: rgba(255, 215, 0, 0.9);
+        box-shadow: 0 6px 25px rgba(212, 175, 55, 0.35), inset 0 0 18px rgba(255, 215, 0, 0.2);
+    }
+}
+
+.countdown-box, .clock-card {
+    animation: royalAura 3.5s ease-in-out infinite;
+}
+
+/* Staggered glow wave effect */
+.countdown-box:nth-child(1) { animation-delay: 0s; }
+.countdown-box:nth-child(2) { animation-delay: 0.8s; }
+.countdown-box:nth-child(3) { animation-delay: 1.6s; }
+.countdown-box:nth-child(4) { animation-delay: 2.4s; }
 
 /* ELEVATED LUXURY BLESSING BANNER STYLING */
 .blessing-banner {
@@ -1577,6 +1630,46 @@ footer .hashtag {
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
     }
 }
+/* Responsive typography fix for parent & family cards */
+@media screen and (max-width: 600px) {
+    /* Main Family Title (e.g., Garg Family) */
+    .family-tab-content h2, 
+    .family-tab-content .family-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Subtitle / Quote Text */
+    .family-tab-content p, 
+    .family-tab-content .family-subtitle {
+        font-size: 0.85rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* Parents Box Badge Header ("PARENTS OF THE GROOM") */
+    .parents-box .subtitle, 
+    .parents-card header span {
+        font-size: 0.7rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    /* Parent Names ("Father: Mr. Hardeep..." & "Mother: Mrs. Meenu...") */
+    .parents-box h3, 
+    .parents-box h4, 
+    .parents-card p,
+    .parents-card div {
+        font-size: 0.95rem !important;  /* Reduces font size for clean single-line/compact fit */
+        line-height: 1.4 !important;
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+    }
+
+    /* Reduce interior card padding on mobile */
+    .parents-box, 
+    .family-royal-card {
+        padding: 12px 15px !important;
+    }
+}
 
 /* 6. Countdown Footer Two-Line Centered Mobile Layout */
 .mobile-break {
@@ -2357,4 +2450,119 @@ footer .hashtag {
 @keyframes sparklePulse {
     0% { opacity: 0.5; transform: scale(0.9); }
     100% { opacity: 1; transform: scale(1.15); }
+}
+
+/* --- Mobile Responsive Scaling (500px and below) --- */
+@media screen and (max-width: 500px) {
+    .creator-watermark-badge {
+        padding: 6px 14px !important;
+        margin: 15px auto !important;
+        font-size: 0.75rem !important;
+        gap: 6px !important;
+        border-radius: 20px !important;
+    }
+
+    .creator-name {
+        font-size: 0.8rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .watermark-icon {
+        font-size: 0.75rem !important;
+    }
+}
+
+
+/* Container for the Sacred Vows background hearts */
+#vowsFloatingContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Individual Floating Heart with Multi-Directional Movement */
+.floating-vow-heart {
+    position: absolute;
+    font-size: 1.6rem;
+    cursor: pointer;
+    pointer-events: auto;
+    animation: driftAllDirections linear infinite;
+    transition: transform 0.2s ease;
+    user-select: none;
+}
+
+.floating-vow-heart:hover {
+    transform: scale(1.3);
+}
+
+@keyframes driftAllDirections {
+    0% { transform: translate(0, 0) scale(0.8); opacity: 0; }
+    20% { opacity: 0.85; }
+    50% { transform: translate(var(--moveX1), var(--moveY1)) scale(1.1); opacity: 0.9; }
+    80% { transform: translate(var(--moveX2), var(--moveY2)) scale(0.95); opacity: 0.85; }
+    100% { transform: translate(var(--moveX3), var(--moveY3)) scale(0.8); opacity: 0; }
+}
+
+/* Burst Particle Effect */
+.heart-particle {
+    position: absolute;
+    font-size: 1.2rem;
+    pointer-events: none;
+    animation: particleBurst 0.8s ease-out forwards;
+    z-index: 3000;
+}
+
+@keyframes particleBurst {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.3); opacity: 0; }
+}
+
+.burst-congrats-text {
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: linear-gradient(135deg, #f5f7fa, #f7e3bb);
+    border: 1.5px solid #d4af37;
+    color: #58181f;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif, Georgia;
+    text-align: center;
+    line-height: 1.4;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35), inset 0 0 8px rgba(255, 255, 255, 0.9);
+    z-index: 1000;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    animation: popupFadeFloat 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
+@keyframes popupFadeFloat {
+    0% { transform: translate(-50%, -10px) scale(0.7); opacity: 0; }
+    20% { transform: translate(-50%, -40px) scale(1); opacity: 1; }
+    80% { transform: translate(-50%, -70px) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -100px) scale(0.95); opacity: 0; }
+}
+
+
+@keyframes heartFadeInSlow {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(var(--finalScale, 1)) rotate(0deg);
+        opacity: 0.9;
+    }
+}
+
+.floating-vow-heart.spawning {
+    animation: heartFadeInSlow 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
+               driftAllDirections linear infinite;
+    animation-delay: 0s, 1.2s; /* Starts with slow fade-in, then switches to drifting */
 }
