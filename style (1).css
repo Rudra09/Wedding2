@@ -2173,14 +2173,19 @@ footer .hashtag {
     position: relative;
     width: 100%;
     max-width: 420px;
-    height: 420px; /* Square ratio to match your prop image perfectly */
+    height: 420px; /* Square ratio */
     margin: 15px auto;
-    background: #000;
+    
+    background-size:calc(); /* Ensures the whole couple image fits without cropping */
+   background-image: url("assets/final-Photoroom.png"); /* Put your default couple image here */
     border-radius: 14px;
     overflow: hidden;
     border: 3px solid #d4af37;
     box-shadow: 0 8px 22px rgba(0,0,0,0.35);
     display: block !important;
+    background-position-x: 14px;
+    background-position-y: 60px;
+    background-repeat: no-repeat;
 }
 
 #webcamVideo {
@@ -2505,7 +2510,8 @@ footer .hashtag {
     20% { opacity: 0.85; }
     50% { transform: translate(var(--moveX1), var(--moveY1)) scale(1.1); opacity: 0.9; }
     80% { transform: translate(var(--moveX2), var(--moveY2)) scale(0.95); opacity: 0.85; }
-    100% { transform: translate(var(--moveX3), var(--moveY3)) scale(0.8); opacity: 0; }
+    85% { transform: translate(var(--moveX3), var(--moveY3)) scale(0.75); opacity: 0.60; }
+    100% { transform: translate(var(--moveX4), var(--moveY4)) scale(0.85); opacity: 0; }
 }
 
 /* Burst Particle Effect */
@@ -2542,6 +2548,15 @@ footer .hashtag {
     animation: popupFadeFloat 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
 
+.burst-congrats-text strong
+{
+color: #58181f; font-size: 1.05rem;
+}
+.burst-congrats-text span
+{
+    font-size: 0.95rem; font-weight: 600; color: #b8860b;
+}
+
 @keyframes popupFadeFloat {
     0% { transform: translate(-50%, -10px) scale(0.7); opacity: 0; }
     20% { transform: translate(-50%, -40px) scale(1); opacity: 1; }
@@ -2565,4 +2580,16 @@ footer .hashtag {
     animation: heartFadeInSlow 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
                driftAllDirections linear infinite;
     animation-delay: 0s, 1.2s; /* Starts with slow fade-in, then switches to drifting */
+}
+/* Mobile scaling for your exact original JavaScript */
+@media (max-width: 568px) {
+    .burst-congrats-text {
+        padding: 5px 10px;
+    }
+    .burst-congrats-text strong {
+        font-size: 0.85rem !important;
+    }
+    .burst-congrats-text span {
+        font-size: 0.75rem !important;
+    }
 }

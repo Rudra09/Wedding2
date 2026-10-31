@@ -840,39 +840,42 @@ function initVowsFloatingHearts() {
     const heartCount = window.innerWidth > 992 ? 22 : 14;
 
     for (let i = 0; i < heartCount; i++) {
-        createSingleVowHeart(container);
+        createVowHeart(container, false); // Initial normal hearts
     }
 }
 
-// Helper function to create and append a single heart with smooth multi-directional movement
-function createSingleVowHeart(container) {
+// Unified helper function for creating any vow heart
+function createVowHeart(container, isSpawning = false) {
     const heart = document.createElement('div');
-    heart.className = 'floating-vow-heart';
+    heart.className = isSpawning ? 'floating-vow-heart spawning' : 'floating-vow-heart';
     
     // 50/50 Mix of Gold (💛) and Silver (🤍) hearts
     heart.innerText = Math.random() > 0.5 ? '💛' : '🤍';
 
-    // Consistent heart sizing for both desktop and mobile
     const randomSize = Math.random() * 0.8 + 1.8; 
     heart.style.fontSize = `${randomSize}rem`;
 
-    // Random positioning across the section (scatters them uniformly from top to bottom)
+    // Random positioning across the section
     heart.style.left = `${Math.random() * 90 + 5}%`;
     heart.style.top = `${Math.random() * 85 + 5}%`;
     
-    // Multi-directional drift path values (same as desktop)
+    // Multi-directional drift path values
     heart.style.setProperty('--moveX1', `${(Math.random() - 0.5) * 180}px`);
     heart.style.setProperty('--moveY1', `${(Math.random() - 0.5) * 180}px`);
     heart.style.setProperty('--moveX2', `${(Math.random() - 0.5) * 240}px`);
     heart.style.setProperty('--moveY2', `${(Math.random() - 0.5) * 240}px`);
     heart.style.setProperty('--moveX3', `${(Math.random() - 0.5) * 300}px`);
     heart.style.setProperty('--moveY3', `${(Math.random() - 0.5) * 300}px`);
+    heart.style.setProperty('--moveX4', `${(Math.random() - 0.5) * 340}px`);
+    heart.style.setProperty('--moveY4', `${(Math.random() - 0.5) * 340}px`);
 
-    heart.style.animationDuration = `${Math.random() * 6 + 8}s`;
-    heart.style.animationDelay = `${Math.random() * 4}s`;
+    // Animation duration (slow fade-in + drift if spawning, standard drift otherwise)
+    heart.style.animationDuration = isSpawning 
+        ? `1.2s, ${Math.random() * 6 + 8}s` 
+        : `${Math.random() * 6 + 8}s`;
 
-    // Click or touch event: bursts 1 heart, triggers the unified message, and spawns 2 new hearts instantly!
-  heart.addEventListener('click', (e) => {
+    // Click event handler
+    heart.addEventListener('click', (e) => {
         const rect = container.getBoundingClientRect();
         const clickX = e.clientX - rect.left;
         const clickY = e.clientY - rect.top;
@@ -880,9 +883,9 @@ function createSingleVowHeart(container) {
         burstVowHeartAt(container, clickX, clickY);
         heart.remove();
 
-        // Spawn BOTH replacement hearts at the exact same time
-        createSlowHeart(container);
-        createSlowHeart(container);
+        // Spawn 2 replacement hearts with the slow fade-in effect
+        createVowHeart(container, true);
+        createVowHeart(container, true);
     });
 
     container.appendChild(heart);
@@ -891,7 +894,7 @@ function createSingleVowHeart(container) {
 function burstVowHeartAt(parentContainer, x, y) {
     const congratsText = document.createElement('div');
     congratsText.className = 'burst-congrats-text';
-    congratsText.innerHTML = `🎉 <strong style="color: #58181f; font-size: 1.05rem;">Congratulations!</strong> 🎉<br><span style="font-size: 0.95rem; font-weight: 600; color: #b8860b;">❤️ Abhishek & Priya ❤️</span>`;
+    congratsText.innerHTML = `<strong>🎉 Congratulations! 🎉</strong> <br><span>❤️ Abhishek & Priya ❤️</span>`;
     congratsText.style.left = `${x}px`;
     congratsText.style.top = `${y}px`;
     parentContainer.appendChild(congratsText);
@@ -900,7 +903,7 @@ function burstVowHeartAt(parentContainer, x, y) {
         congratsText.remove();
     }, 1200);
 
-    const symbols = ['✨', '💖', '💛', '🤍','❤️','💓','💗','💕'];
+    const symbols = ['✨', '💖', '💛', '🤍', '❤️', '💓', '💗', '💕'];
     for (let i = 0; i < 16; i++) {
         const particle = document.createElement('div');
         particle.className = 'heart-particle';
@@ -927,44 +930,3 @@ function burstVowHeartAt(parentContainer, x, y) {
 // Initialize on load and resize
 window.addEventListener('DOMContentLoaded', initVowsFloatingHearts);
 window.addEventListener('resize', initVowsFloatingHearts);
-
-
-function createSlowHeart(container) {
-    const heart = document.createElement('div');
-    heart.className = 'floating-vow-heart spawning'; // Uses the slow fade-in class
-    
-    // 50/50 Mix of Gold (💛) and Silver (🤍) hearts
-    heart.innerText = Math.random() > 0.5 ? '💛' : '🤍';
-
-    const randomSize = Math.random() * 0.8 + 1.8; 
-    heart.style.fontSize = `${randomSize}rem`;
-
-    // Random positioning across the section
-    heart.style.left = `${Math.random() * 90 + 5}%`;
-    heart.style.top = `${Math.random() * 85 + 5}%`;
-    
-    // Multi-directional drift path values
-    heart.style.setProperty('--moveX1', `${(Math.random() - 0.5) * 180}px`);
-    heart.style.setProperty('--moveY1', `${(Math.random() - 0.5) * 180}px`);
-    heart.style.setProperty('--moveX2', `${(Math.random() - 0.5) * 240}px`);
-    heart.style.setProperty('--moveY2', `${(Math.random() - 0.5) * 240}px`);
-    heart.style.setProperty('--moveX3', `${(Math.random() - 0.5) * 300}px`);
-    heart.style.setProperty('--moveY3', `${(Math.random() - 0.5) * 300}px`);
-
-    heart.style.animationDuration = `1.2s, ${Math.random() * 6 + 8}s`;
-
-    // Click event for the new heart as well
-    heart.addEventListener('click', (e) => {
-        const rect = container.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
-
-        burstVowHeartAt(container, clickX, clickY);
-        heart.remove();
-
-        createSlowHeart(container);
-        createSlowHeart(container);
-    });
-
-    container.appendChild(heart);
-}
