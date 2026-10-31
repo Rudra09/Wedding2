@@ -35,15 +35,180 @@ img {
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
+.subtitle {
+    margin-bottom: 12px;
+    margin-top: -5px;
+    text-align: center;
+}
 
+/* Force each line onto its own row */
+.subtitle-row {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+.invite-banner-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px; /* Increased vertical padding to center text vertically */
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.invite-banner-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1.2; /* Ensures text is properly centered inside the badge */
+}
+
+/* Desktop default for Venue & Date */
+.venue-date-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.gold-gradient {
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mobile-break {
+    display: none; /* Hidden on desktop */
+}
+
+/* Mobile Responsiveness (Under 500px) */
+@media (max-width: 500px) {
+    .invite-banner-box {
+        padding: 8px 12px !important; /* Balanced vertical spacing for mobile */
+        max-width: 95vw;
+    }
+    .invite-banner-text {
+        font-size: 0.78rem !important;
+        letter-spacing: 0.45px !important;
+        line-height: 1.3 !important;
+    }
+    .venue-date-badge {
+        flex-direction: column !important;
+        gap: 2px !important;
+        padding: 7px 14px !important;
+        font-size: 0.78rem !important;
+        letter-spacing: 0.2px !important;
+        max-width: 95vw;
+    }
+    .desktop-star {
+        display: none;
+    }
+    .mobile-break {
+        display: block;
+    }
+}
 .cursive-name {
     font-family: 'Great Vibes', cursive;
     font-size: clamp(4rem, 7vw, 7rem);
-    color: #fff6d6;
     font-weight: 400;
     line-height: 1.1;
+    margin-top: 5px;
     margin-bottom: 10px;
-    text-shadow: 0 4px 25px rgba(0,0,0,0.85);
+    text-align: center;
+    
+    /* Light Champagne Gold Base with Pearl-Silver Light Beam */
+    background: linear-gradient(
+        105deg, 
+        #f5e6b3 0%,    /* Light Warm Champagne */
+        #fbf3d5 25%,   /* Bright Cream Gold */
+        #ffffff 45%,   /* Brilliant Pearl-Silver Shine */
+        #e3eaf5 55%,   /* Cool Soft Silver Tone */
+        #fbf3d5 75%,   /* Bright Cream Gold */
+        #f5e6b3 100%   /* Light Warm Champagne */
+    );
+    background-size: 230% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Gentle, graceful 7.5s animation */
+    animation: goldSilverHarmonized 7.5s ease-in-out infinite;
+
+    /* Dual Gold & Silver Complementary Text Shadow */
+    text-shadow: 
+        0 0 12px rgba(247, 231, 169, 0.45), /* Warm Gold Inner Glow */
+        0 0 28px rgba(224, 232, 245, 0.35), /* Cool Silver Outer Halo */
+        0 4px 22px rgba(0, 0, 0, 0.85);     /* Crisp Backdrop Contrast */
+}
+
+@keyframes goldSilverHarmonized {
+    0% {
+        background-position: 180% center;
+    }
+    50% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: -180% center;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Main Cursive Names (Kept large and on a single line) */
+    .cursive-name {
+       font-size: clamp(3.8rem, 14vw, 5.2rem) !important;
+        white-space: nowrap;
+        letter-spacing: -1.5px;
+       
+    }
+
+    /* Scaled-down Tagline */
+   .tagline {
+        font-size: 16px !important; /* Fixed compact size (12px) */
+        line-height: 1.3 !important;
+       
+        /* padding: 0 10px !important; */
+        /* opacity: 0.95 !important; */
+        font-weight:400 !important;
+        color: #fef8faa7;
+    }
+
+    /* Scaled-down Mantra Box Container */
+    .mantra-box {
+       
+        padding: 10px 14px;
+        margin: 0 auto 20px;
+        max-width: 90%;
+    }
+
+    /* Sanskrit Sloka Text */
+    .mantra-box p.sanskrit {
+        font-size:medium !important;
+        line-height: 1.5;
+        letter-spacing: 0.3px;
+        margin-bottom: 6px;
+    }
+
+    /* English Blessing Subtext */
+    .mantra-box p:not(.sanskrit) {
+        font-size: clamp(0.75rem, 2.8vw, 0.88rem);
+        line-height: 1.35;
+        opacity: 0.85;
+        
+    }
 }
 
 
@@ -472,9 +637,10 @@ header.hero {
 
 .hero .tagline {
     font-size: clamp(1.3rem, 2.8vw, 1.7rem);
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 24px;
     font-style: italic;
+    color: #fef8fa;
 }
 
 @media (min-width: 992px) {
